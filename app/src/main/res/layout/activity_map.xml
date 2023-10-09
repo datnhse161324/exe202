@@ -12,6 +12,7 @@
         android:layout_height="60dp"
         android:hint="Nhập địa chỉ thu gom"
         android:paddingLeft="10dp"
+        android:layout_alignParentTop="true"
         android:textSize="18sp"/>
 
     <fragment

@@ -117,6 +117,8 @@ public class ViewVoucherActivity extends AppCompatActivity {
     private void getView() {
        DB.queryData("Create Table if not exists Voucher (voucherID Integer Primary Key Autoincrement," +
                "voucherName nvarchar(20), expiredDate nvarchar(20), voucherPrice Integer, description nvarchar(50))");
+        DB.queryData("Create Table if not exists UserVoucher (voucherOrderID Integer Primary Key Autoincrement," +
+                "userName nvarchar(20), voucherName nvarchar(20), voucherCode nvarchar(20), exchangeDate nvarchar(20),Constraint fk_User Foreign Key (userName) references User(userName))");
 //        DB.queryData();
         Cursor dataVoucher= DB.getVoucher();
         arrayVoucher.clear();
