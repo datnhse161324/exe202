@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#5F9866">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/baseline_arrow_back_24" />
+
+        <TextView
+            android:id="@+id/tvMyProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="35sp"
+            android:layout_marginLeft="38dp"
+            android:text="Trang cá nhân của tôi"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/squareP"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="79dp"
+        android:background="#5F9866" />
+
+    <ImageView
+        android:id="@+id/icProfile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="41dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="89dp"
+        android:background="@drawable/self" />
+
+    <ImageView
+        android:id="@+id/squarePo"
+        android:layout_width="220dp"
+        android:layout_height="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="163dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="78dp"
+        android:background="#5F9866" />
+
+    <ImageView
+        android:id="@+id/icMot"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="173dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="85dp"
+        android:background="@drawable/mot" />
+
+    <TextView
+        android:id="@+id/tvMyPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="171dp"
+        android:layout_marginTop="168dp"
+        android:text="Điểm của tôi: "
+        android:textSize="20sp"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/tvMyPoint2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="332dp"
+        android:layout_marginTop="168dp"
+        android:text="Điểm "
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tvPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="305dp"
+        android:layout_marginTop="168dp"
+        android:text="0"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:id="@+id/LLline"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="465dp"
+        android:background="#5F9866"
+        android:orientation="horizontal" />
+
+    <EditText
+        android:id="@+id/profileName"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="299dp"
+        android:textColorHint="#5F9866"
+        android:hint="Họ và tên"/>
+
+    <EditText
+        android:id="@+id/profilePhone"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="370dp"
+        android:hint="Số điện thoại"
+        android:textColorHint="#5F9866" />
+
+    <EditText
+        android:id="@+id/profileBirth"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="439dp"
+        android:hint="Ngày sinh"
+        android:textColorHint="#5F9866" />
+
+    <EditText
+        android:id="@+id/profileGen"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="511dp"
+        android:hint="Giới Tính"
+        android:textColorHint="#5F9866" />
+
+    <EditText
+        android:id="@+id/profileAddr"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="585dp"
+        android:hint="Địa chỉ"
+        android:textColorHint="#5F9866" />
+
+    <Button
+        android:id="@+id/update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="664dp"
+        android:text="Cập Nhật" />
+
+    <Button
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="195dp"
+        android:layout_marginTop="664dp"
+        android:text="Xem thông tin" />
+
+    <ImageView
+        android:id="@+id/icName"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="307dp"
+        android:background="@drawable/self" />
+
+    <ImageView
+        android:id="@+id/icPhone"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="376dp"
+        android:background="@drawable/phone" />
+
+    <ImageView
+        android:id="@+id/icBirth"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="447dp"
+        android:background="@drawable/birth" />
+
+    <ImageView
+        android:id="@+id/icGen"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="522dp"
+        android:background="@drawable/gen" />
+
+    <ImageView
+        android:id="@+id/icLoc"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="596dp"
+        android:background="@drawable/location" />
+
+
+</RelativeLayout></ScrollView>
