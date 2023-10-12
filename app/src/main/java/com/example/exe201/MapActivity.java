@@ -54,7 +54,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         btnChoose.setOnClickListener(view -> {
             Intent intent= new Intent(MapActivity.this, OrderActivity.class);
             intent.putExtra("location",searchView.getQuery().toString());
-            startActivity(intent);
+            setResult(RESULT_OK, intent);
             finish();
         });
     }
