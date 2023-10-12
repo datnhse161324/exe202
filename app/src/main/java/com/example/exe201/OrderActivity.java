@@ -1,9 +1,11 @@
 package com.example.exe201;
 
+import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -14,7 +16,7 @@ import java.util.Calendar;
 
 public class OrderActivity extends AppCompatActivity {
     private ActivityResultLauncher<Intent> launcher;
-    Button btnChoose, btnPickTime;
+    Button btnChoose, btnPickTime, btnPickDate;
     TextView location;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,7 @@ public class OrderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order);
         btnChoose= findViewById(R.id.selectLoca);
         btnPickTime = findViewById(R.id.idBtnPickTime);
+        btnPickDate = findViewById(R.id.idBtnPickDate);
         launcher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -59,6 +62,33 @@ public class OrderActivity extends AppCompatActivity {
             // at last we are calling show to
             // display our time picker dialog.
             timePickerDialog.show();
+        });
+        btnPickDate.setOnClickListener(v -> {
+            // on below line we are getting
+            // the instance of our calendar.
+            final Calendar c = Calendar.getInstance();
+
+            // on below line we are getting
+            // our day, month and year.
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            // on below line we are creating a variable for date picker dialog.
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    // on below line we are passing context.
+                    OrderActivity.this,
+                    (view, year1, monthOfYear, dayOfMonth) -> {
+                        // on below line we are setting date to our text view.
+                        btnPickDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year1);
+                    },
+                    // on below line we are passing year,
+                    // month and day for selected date in our date picker.
+                    year, month, day);
+            // at last we are calling show to
+            // display our date picker dialog.
+            datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+            datePickerDialog.show();
         });
     }
 }

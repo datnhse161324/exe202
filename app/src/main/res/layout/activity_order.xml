@@ -143,12 +143,16 @@
             android:layout_marginTop="10dp"
             android:textStyle="bold"
             android:textSize="27sp"/>
-    </LinearLayout>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_below="@+id/LLchoseDate"
-        android:hint="DD/MM/YYYY"/>
+        <Button
+            android:id="@+id/idBtnPickDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:text="Chọn"
+            android:textSize="20sp"
+            android:textAllCaps="false" />
+    </LinearLayout>
 
 </RelativeLayout>
