@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.Calendar;
+import java.util.Random;
+
 public class DBHelper extends SQLiteOpenHelper {
     public static final String DBname= "Login.db";
     public DBHelper(Context context) {
@@ -35,6 +38,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
    //     myDB.execSQL("create Table UserVoucher (userVoucherID Integer Primary Key Autoincrement," +
     //            "userName nvarchar(20) references User,voucherName nvarchar(20) references Voucher, exchangeDate nvarchar(20))");
+
+        myDB.execSQL("create table if not exists UserOrder (orderID Integer Primary Key Autoincrement,orderCode nvarchar(20)," +
+                " userName nvarchar(20), materialAmount decimal, createDate nvarchar(20), status nvarchar(20), address nvarchar(50), orderDate nvarchar(20), orderTime nvarchar(20),Constraint fk_UserOrder Foreign Key (userName) references User(userName))");
     }
 
     @Override
@@ -114,7 +120,7 @@ public class DBHelper extends SQLiteOpenHelper {
 //                ", gender= '"+gen+"', address= '"+add+"' WHERE username= '"+username+"'");
 //        return;
 //    }
-public boolean update(String username, String fullName, String phone ,String birth, String gen, String address){
+    public boolean update(String username, String fullName, String phone ,String birth, String gen, String address){
     SQLiteDatabase myDB= this.getWritableDatabase();
     ContentValues contentValues= new ContentValues();
     contentValues.put("fullName",fullName);
@@ -167,5 +173,49 @@ public boolean update(String username, String fullName, String phone ,String bir
         SQLiteDatabase myDB= this.getWritableDatabase();
         Cursor cursor= myDB.rawQuery("Select UserVoucher.voucherName, voucherCode, description from UserVoucher INNER join Voucher on UserVoucher.voucherName= Voucher.voucherName where userName=?", new String[]{username});
         return cursor;
+    }
+
+    public boolean insertOrder(String userName, String address, String orderTime, String orderDate){
+        SQLiteDatabase myDB= this.getWritableDatabase();
+        Cursor cursor=myDB.rawQuery("Select * from UserOrder",null);
+        int tem= cursor.getCount();
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        ContentValues contentValues= new ContentValues();
+        contentValues.put("orderID",tem);
+        contentValues.put("userName",userName);
+        contentValues.put("orderCode",getRanString(10));
+        contentValues.put("createDate",day+"/"+month+"/"+year);
+        contentValues.put("status","waiting");
+        contentValues.put("address", address);
+        contentValues.put("orderDate", orderDate);
+        contentValues.put("orderTime", orderTime);
+        long result= myDB.insert("UserOrder",null, contentValues);
+        if (result==-1)
+            return false;
+        else
+            return true;
+    }
+    public Cursor getOrder(){
+        SQLiteDatabase myDB= this.getWritableDatabase();
+        Cursor cursor= myDB.rawQuery("Select * from UserOrder",null);
+        return cursor;
+    }
+    public Cursor getMyOrder(String username){
+        SQLiteDatabase myDB= this.getWritableDatabase();
+        Cursor cursor= myDB.rawQuery("Select * from UserOrder where userName=?", new String[]{username});
+        return cursor;
+    }
+    private static String getRanString(int a){
+        final String character= "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        StringBuilder result= new StringBuilder();
+        while (a>0){
+            Random r= new Random();
+            result.append(character.charAt(r.nextInt(character.length())));
+            a--;
+        }
+        return result.toString();
     }
 }
