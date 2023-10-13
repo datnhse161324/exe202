@@ -2,7 +2,6 @@ package com.example.exe201;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -103,9 +102,6 @@ public class OrderActivity extends AppCompatActivity {
             datePickerDialog.show();
         });
         btnBack2.setOnClickListener(v -> {
-            Intent out=new Intent(getApplicationContext(), MainActivity.class);
-            out.putExtra("user",username);
-            startActivity(out);
             finish();
         });
         btnCreateOrder.setOnClickListener(v -> {
@@ -135,7 +131,7 @@ public class OrderActivity extends AppCompatActivity {
             Boolean insert= DB.insertOrder(userName, address, orderTime, orderDate);
             if(insert){
                 Toast.makeText(OrderActivity.this, "Đặt lịch thành công",Toast.LENGTH_SHORT).show();
-                Intent out = new Intent(getApplicationContext(), ViewOrderActivity.class);
+                Intent out = new Intent(getApplicationContext(), ViewMyOrderActivity.class);
                 out.putExtra("user", userName);
                 startActivity(out);
                 finish();

@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent= new Intent(getApplicationContext(), OrderActivity.class);
                 intent.putExtra("user",username);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -79,10 +78,9 @@ public class MainActivity extends AppCompatActivity {
         imgMyOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(getApplicationContext(), ViewOrderActivity.class);
+                Intent intent= new Intent(getApplicationContext(), ViewMyOrderActivity.class);
                 intent.putExtra("user",username);
                 startActivity(intent);
-                finish();
             }
         });
     }

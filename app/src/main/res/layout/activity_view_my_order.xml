@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewOrderActivity">
+    tools:context=".ViewMyOrderActivity">
     <LinearLayout
         android:id="@+id/LLOrderList"
         android:layout_width="match_parent"
@@ -39,5 +39,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="43dp"
         android:layout_marginBottom="43dp"
-        android:layout_marginHorizontal="29dp"/>
+        android:layout_marginHorizontal="29dp">
+
+    </ListView>
 </RelativeLayout>

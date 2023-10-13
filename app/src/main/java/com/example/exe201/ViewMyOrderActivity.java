@@ -2,6 +2,7 @@ package com.example.exe201;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -11,16 +12,19 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class ViewOrderActivity extends AppCompatActivity {
+public class ViewMyOrderActivity extends AppCompatActivity {
     ImageView btnBack;
     DBHelper DB;
     ListView lvOrderList;
     OrderAdapter adapter;
     ArrayList<Order> arrayOrder;
+    int location;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_order);
+        setContentView(R.layout.activity_view_my_order);
+
         btnBack= findViewById(R.id.back4);
         lvOrderList = findViewById(R.id.lvOrderList);
         DB= new DBHelper(this);
@@ -36,10 +40,11 @@ public class ViewOrderActivity extends AppCompatActivity {
                 finish();
             }
         });
-        getView();
+        getView(username);
     }
-    private void getView(){
-        Cursor cursor= DB.getOrder();
+
+    private void getView(String username){
+        Cursor cursor= DB.getMyOrder(username);
         arrayOrder.clear();
         while (cursor.moveToNext()){
             int orderId = cursor.getInt(0);
@@ -55,5 +60,4 @@ public class ViewOrderActivity extends AppCompatActivity {
         }
         adapter.notifyDataSetChanged();
     }
-
 }

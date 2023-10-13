@@ -10,12 +10,15 @@
         android:id="@+id/etYourLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:background="#BFBFBF"
         android:elevation="5dp"
+        android:textSize="18sp"
         app:iconifiedByDefault="false"
-        app:queryHint="Nhập địa chỉ thu gom"
-        android:textSize="18sp"/>
+        app:queryHint="Nhập địa chỉ thu gom" />
 
     <fragment
         android:id="@+id/map"
@@ -32,5 +35,7 @@
         android:layout_below="@id/map"
         android:layout_alignParentRight="true"
         android:textSize="20sp"
+        android:backgroundTint="#5F9866"
+        android:textColor="@color/white"
         />
 </RelativeLayout>
