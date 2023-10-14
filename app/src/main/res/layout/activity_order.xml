@@ -23,8 +23,9 @@
         <TextView
             android:id="@+id/tvOrder"
             android:layout_width="wrap_content"
-            android:layout_height="35sp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="38dp"
+            android:layout_marginTop="10dp"
             android:text="Đặt lịch hẹn thu gom"
             android:textColor="#FFFFFF"
             android:textSize="25sp"
@@ -108,10 +109,14 @@
             android:textStyle="bold"
             android:textSize="27sp"/>
 
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="27dp"
-            android:layout_marginTop="6dp"/>
+        <Button
+            android:id="@+id/idBtnPickTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Chọn"
+            android:textSize="20sp"
+            android:textAllCaps="false" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/LLchoseDate"
@@ -138,12 +143,24 @@
             android:layout_marginTop="10dp"
             android:textStyle="bold"
             android:textSize="27sp"/>
+
+        <Button
+            android:id="@+id/idBtnPickDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:text="Chọn"
+            android:textSize="20sp"
+            android:textAllCaps="false" />
     </LinearLayout>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_below="@+id/LLchoseDate"
-        android:hint="DD/MM/YYYY"/>
-
+    <Button
+        android:id="@+id/btnCreateOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:textSize="27sp"
+        android:text="Tạo Order"/>
 </RelativeLayout>

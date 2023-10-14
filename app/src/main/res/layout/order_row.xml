@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="10dp">
+    <TextView
+        android:id="@+id/tvOrderCode"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="Ma Order"
+        android:paddingLeft="5dp"
+        android:gravity="center_vertical"
+        android:textSize="20dp"
+        android:textColor="@color/cardview_dark_background"/>
+    <LinearLayout
+        android:id="@+id/LLCreateDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvOrderCode"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:text="Ngày đặt lịch"
+            android:paddingLeft="5dp"
+            android:gravity="center_vertical"
+            android:textSize="15sp"
+            android:textColor="@color/cardview_dark_background"/>
+
+        <TextView
+            android:id="@+id/tvCreateDate"
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:text="dd/mm/yyyy"
+            android:paddingLeft="5dp"
+            android:gravity="center_vertical"
+            android:textSize="15sp"
+            android:textColor="@color/cardview_dark_background"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/LLOrderDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LLCreateDate"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:text="Ngày thu gom"
+            android:paddingLeft="5dp"
+            android:gravity="center_vertical"
+            android:textSize="15sp"
+            android:textColor="@color/cardview_dark_background"/>
+
+        <TextView
+            android:id="@+id/tvOrderDate"
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:text="dd/mm/yyyy"
+            android:paddingLeft="5dp"
+            android:gravity="center_vertical"
+            android:textSize="15sp"
+            android:textColor="@color/cardview_dark_background"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/LLOrderTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LLOrderDate"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:text="Thời gian thu gom"
+            android:paddingLeft="5dp"
+            android:gravity="center_vertical"
+            android:textSize="15sp"
+            android:textColor="@color/cardview_dark_background"/>
+
+        <TextView
+            android:id="@+id/tvOrderTime"
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:text="hh:mm"
+            android:paddingLeft="5dp"
+            android:gravity="center_vertical"
+            android:textSize="15sp"
+            android:textColor="@color/cardview_dark_background"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/LLAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LLOrderTime"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:text="Địa chỉ"
+            android:paddingLeft="5dp"
+            android:gravity="center_vertical"
+            android:textSize="15sp"
+            android:textColor="@color/cardview_dark_background"/>
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:text="..."
+            android:paddingLeft="5dp"
+            android:gravity="center_vertical"
+            android:textSize="15sp"
+            android:textColor="@color/cardview_dark_background"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/LLStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LLAddress"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:text="Trạng thái"
+            android:paddingLeft="5dp"
+            android:gravity="center_vertical"
+            android:textSize="15sp"
+            android:textColor="@color/cardview_dark_background"/>
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:text="đang chờ"
+            android:paddingLeft="5dp"
+            android:gravity="center_vertical"
+            android:textSize="15sp"
+            android:textColor="@color/cardview_dark_background"/>
+
+    </LinearLayout>
+</RelativeLayout>

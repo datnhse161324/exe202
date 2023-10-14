@@ -6,12 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".MapActivity">
 
-    <EditText
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/etYourLocation"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:hint="Nhập địa chỉ thu gom"
-        android:paddingLeft="10dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#BFBFBF"
+        android:elevation="5dp"
+        app:iconifiedByDefault="false"
+        app:queryHint="Nhập địa chỉ thu gom"
         android:textSize="18sp"/>
 
     <fragment
@@ -21,4 +24,13 @@
         android:layout_below="@+id/etYourLocation"
         android:layout_marginTop="5dp"
         android:name="com.google.android.gms.maps.SupportMapFragment"/>
+    <Button
+        android:id="@+id/selectLoca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chọn"
+        android:layout_below="@id/map"
+        android:layout_alignParentRight="true"
+        android:textSize="20sp"
+        />
 </RelativeLayout>
