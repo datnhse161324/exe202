@@ -46,17 +46,19 @@ public class ViewMyOrderActivity extends AppCompatActivity {
     private void getView(String username){
         Cursor cursor= DB.getMyOrder(username);
         arrayOrder.clear();
-        while (cursor.moveToNext()){
-            int orderId = cursor.getInt(0);
-            String orderCode = cursor.getString(1);
-            String userName = cursor.getString(2);
-            double materialAmount = cursor.getDouble(3);
-            String createDate = cursor.getString(4);
-            String status = cursor.getString(5);
-            String address = cursor.getString(6);
-            String orderDate = cursor.getString(7);
-            String orderTime = cursor.getString(8);
-            arrayOrder.add(new Order(orderId, orderCode, userName, materialAmount, createDate, status,address,orderDate, orderTime));
+        if(cursor.getCount()>0){
+            while (cursor.moveToNext()){
+                int orderId = cursor.getInt(0);
+                String orderCode = cursor.getString(1);
+                String userName = cursor.getString(2);
+                double materialAmount = cursor.getDouble(3);
+                String createDate = cursor.getString(4);
+                String status = cursor.getString(5);
+                String address = cursor.getString(6);
+                String orderDate = cursor.getString(7);
+                String orderTime = cursor.getString(8);
+                arrayOrder.add(new Order(orderId, orderCode, userName, materialAmount, createDate, status,address,orderDate, orderTime));
+            }
         }
         adapter.notifyDataSetChanged();
     }
