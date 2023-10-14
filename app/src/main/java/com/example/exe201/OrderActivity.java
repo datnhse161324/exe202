@@ -4,6 +4,8 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -66,18 +68,14 @@ public class OrderActivity extends AppCompatActivity {
             int minute = c.get(Calendar.MINUTE);
 
             // on below line we are initializing our Time Picker Dialog
-            MaterialTimePicker materialTimePicker = new MaterialTimePicker.Builder()
-                    .setHour(hour)
-                    .setMinute(minute)
-                    .build();
-            TimePickerDialog timePickerDialog = new TimePickerDialog(OrderActivity.this,
+            TimePickerDialog timePickerDialog = new TimePickerDialog(OrderActivity.this, android.R.style.Theme_Holo_Light_Dialog ,
                     (view, hourOfDay, minute1) -> {
-                        // on below line we are setting selected time
-                        // in our text view.
                         btnPickTime.setText(hourOfDay + ":" + minute1);
                     }, hour, minute, false);
             // at last we are calling show to
             // display our time picker dialog.
+            timePickerDialog.setTitle("Chọn giờ:");
+            timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             timePickerDialog.show();
         });
         btnPickDate.setOnClickListener(v -> {
