@@ -15,6 +15,8 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.timepicker.MaterialTimePicker;
+
 import java.util.Calendar;
 
 public class OrderActivity extends AppCompatActivity {
@@ -64,6 +66,10 @@ public class OrderActivity extends AppCompatActivity {
             int minute = c.get(Calendar.MINUTE);
 
             // on below line we are initializing our Time Picker Dialog
+            MaterialTimePicker materialTimePicker = new MaterialTimePicker.Builder()
+                    .setHour(hour)
+                    .setMinute(minute)
+                    .build();
             TimePickerDialog timePickerDialog = new TimePickerDialog(OrderActivity.this,
                     (view, hourOfDay, minute1) -> {
                         // on below line we are setting selected time

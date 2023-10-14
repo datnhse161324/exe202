@@ -29,7 +29,7 @@ public class ViewMyOrderActivity extends AppCompatActivity {
         lvOrderList = findViewById(R.id.lvOrderList);
         DB= new DBHelper(this);
         arrayOrder = new ArrayList<>();
-        adapter = new OrderAdapter(this, R.layout.order_row, arrayOrder);
+        adapter = new OrderAdapter(this, R.layout.my_order_row, arrayOrder);
         lvOrderList.setAdapter(adapter);
 
         Intent intent= getIntent();

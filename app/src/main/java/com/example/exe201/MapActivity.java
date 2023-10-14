@@ -106,7 +106,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         }
         ggMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         ggMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
-
     }
 }
 
