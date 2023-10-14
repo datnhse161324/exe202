@@ -34,30 +34,6 @@ public class ViewOrderActivity extends AppCompatActivity {
         adapter = new OrderAdapter(this, R.layout.order_row, arrayOrder);
         lvOrderList.setAdapter(adapter);
         getView();
-        lvOrderList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ViewOrderActivity.this);
-                builder.setMessage("Bạn muốn đường đi tới địa chỉ này?")
-                        .setCancelable(true)
-                        .setPositiveButton("CÓ", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                String destination = arrayOrder.get(position).getAddress();
-                                getDirection(destination);
-                                dialogInterface.cancel();
-                            }
-                        })
-                        .setNegativeButton("KHÔNG", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.cancel();
-                            }
-                        })
-                        .show();
-            }
-        });
-
         Intent intent= getIntent();
         String username= getIntent().getStringExtra("user");
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -85,20 +61,6 @@ public class ViewOrderActivity extends AppCompatActivity {
             }
         }
         adapter.notifyDataSetChanged();
-    }
-    private void getDirection(String to){
-        try {
-            Uri uri = Uri.parse("https://www.google.com/maps/dir/?api=1&destination="+to);
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            intent.setPackage("com.google.android.apps.maps");
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-        }catch (ActivityNotFoundException e){
-            Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.apps.maps");
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-        }
     }
 
 }

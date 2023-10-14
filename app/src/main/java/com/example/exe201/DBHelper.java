@@ -198,9 +198,19 @@ public class DBHelper extends SQLiteOpenHelper {
         else
             return true;
     }
+    public boolean updateOrderStatus(String orderCode, String status){
+        SQLiteDatabase myDB= this.getWritableDatabase();
+        ContentValues contentValues= new ContentValues();
+        contentValues.put("status", status);
+        long result= myDB.update("UserOrder",contentValues,"orderCode=?", new String[]{orderCode});
+        if (result==-1)
+            return false;
+        else
+            return true;
+    }
     public Cursor getOrder(){
         SQLiteDatabase myDB= this.getWritableDatabase();
-        Cursor cursor= myDB.rawQuery("Select * from UserOrder",null);
+        Cursor cursor= myDB.rawQuery("Select * from UserOrder order by orderDate",null);
         return cursor;
     }
     public Cursor getMyOrder(String username){

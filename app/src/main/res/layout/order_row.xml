@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginVertical="10dp">
+    android:layout_height="match_parent">
     <LinearLayout
         android:id="@+id/LLOrderCode"
         android:layout_width="match_parent"
@@ -17,14 +16,16 @@
             android:gravity="center_vertical"
             android:textSize="20dp"
             android:textColor="@color/cardview_dark_background"/>
-        <ImageView
+        <Button
             android:id="@+id/btnGuide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/baseline_maps_home_work_24"
+            android:text="chỉ đuòng"
+            android:drawableLeft="@drawable/baseline_maps_home_work_24"
+            android:drawableTint="#FFFFFF"
             android:backgroundTint="#5F9866">
-        </ImageView>
+        </Button>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/LLCreateDate"
@@ -121,8 +122,9 @@
 
         <TextView
             android:id="@+id/tvAddress"
-            android:layout_width="200dp"
-            android:layout_height="25dp"
+            android:layout_width="wrap_content"
+            android:maxWidth="200dp"
+            android:layout_height="wrap_content"
             android:text="..."
             android:paddingLeft="5dp"
             android:gravity="center_vertical"
@@ -154,6 +156,14 @@
             android:gravity="center_vertical"
             android:textSize="15sp"
             android:textColor="@color/cardview_dark_background"/>
-
     </LinearLayout>
+    <Button
+        android:id="@+id/btnStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LLStatus"
+        android:layout_centerHorizontal="true"
+        android:text="Cập nhât trạng thái"
+        android:backgroundTint="#5F9866">
+    </Button>
 </RelativeLayout>

@@ -87,7 +87,7 @@
     <LinearLayout
         android:id="@+id/LLchoseTime"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/tvAddress"
         android:orientation="horizontal">
 
@@ -103,7 +103,8 @@
             android:id="@+id/tvTimeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Thời gian thu gom: "
+            android:text="Giờ thu gom:"
+            android:layout_weight="1"
             android:textColor="#5F9866"
             android:layout_marginLeft="7dp"
             android:layout_marginTop="10dp"
@@ -112,7 +113,7 @@
 
         <Button
             android:id="@+id/idBtnPickTime"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Chọn"
