@@ -84,6 +84,7 @@ public class ViewProfileActivity extends AppCompatActivity {
                     buffer.append("Ngày sinh: "+res.getString(6)+"\n");
                     buffer.append("Giới tính: "+res.getString(7)+"\n");
                     buffer.append("Địa chỉ: "+res.getString(8)+"\n");
+                    buffer.append("Điểm: "+res.getInt(9)+"\n");
                 }
 
                 AlertDialog.Builder builder= new AlertDialog.Builder(ViewProfileActivity.this);

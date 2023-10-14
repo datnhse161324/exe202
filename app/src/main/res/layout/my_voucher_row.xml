@@ -16,7 +16,7 @@
             android:paddingLeft="5dp"
             android:gravity="center_vertical"
             android:textSize="20dp"
-            android:textColor="@color/cardview_dark_background"/>
+            android:textColor="#5F9866"/>
     </LinearLayout>
 
     <LinearLayout
@@ -33,7 +33,7 @@
             android:paddingLeft="5dp"
             android:gravity="center_vertical"
             android:textSize="18sp"
-            android:textColor="@color/cardview_dark_background"/>
+            android:textColor="#5F9866"/>
 
         <ImageView
             android:id="@+id/imgCopy"
@@ -45,11 +45,11 @@
     <TextView
         android:id="@+id/tvMyDescription"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/LLVMyVoucher"
         android:text="Mô tả"
         android:paddingLeft="5dp"
         android:gravity="center_vertical"
         android:textSize="18sp"
-        android:textColor="@color/cardview_dark_background"/>
+        android:textColor="#5F9866"/>
 </RelativeLayout>

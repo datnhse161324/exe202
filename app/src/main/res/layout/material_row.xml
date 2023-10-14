@@ -15,7 +15,7 @@
             android:paddingLeft="5dp"
             android:gravity="center_vertical"
             android:textSize="20dp"
-            android:textColor="@color/cardview_dark_background"/>
+            android:textColor="#5F9866"/>
 
         <TextView
             android:id="@+id/tvNameMaterial"
@@ -25,7 +25,7 @@
             android:paddingLeft="5dp"
             android:gravity="center_vertical"
             android:textSize="20dp"
-            android:textColor="@color/cardview_dark_background"/>
+            android:textColor="#5F9866"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/LLVPrice"
@@ -41,7 +41,7 @@
             android:paddingLeft="5dp"
             android:gravity="center_vertical"
             android:textSize="15sp"
-            android:textColor="@color/cardview_dark_background"/>
+            android:textColor="#5F9866"/>
 
         <TextView
             android:id="@+id/tvUnitPrice"
@@ -51,12 +51,12 @@
             android:paddingLeft="5dp"
             android:gravity="center_vertical"
             android:textSize="15sp"
-            android:textColor="@color/cardview_dark_background"/>
+            android:textColor="#5F9866"/>
 
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_below="@+id/LLVPrice"
-        android:background="@color/black"/>
+        android:background="#5F9866"/>
 </RelativeLayout>

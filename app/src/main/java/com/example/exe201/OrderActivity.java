@@ -122,6 +122,8 @@ public class OrderActivity extends AppCompatActivity {
         });
     }
     private void insertOrder(){
+        DB.queryData("create table if not exists UserOrder (orderID Integer Primary Key Autoincrement,orderCode nvarchar(20)," +
+                " userName nvarchar(20), materialAmount decimal, createDate nvarchar(20), status nvarchar(20), address nvarchar(50), orderDate nvarchar(20), orderTime nvarchar(20),Constraint fk_UserOrder Foreign Key (userName) references User(userName))");
         String userName = getIntent().getStringExtra("user");
         String address = txtLocation.getText().toString();
         String orderTime = btnPickTime.getText().toString();

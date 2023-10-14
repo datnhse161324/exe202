@@ -12,6 +12,7 @@
     tools:context=".ViewProfileActivity">
 
     <LinearLayout
+        android:id="@+id/LL"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
@@ -58,70 +59,13 @@
         android:layout_marginTop="89dp"
         android:background="@drawable/self" />
 
-    <ImageView
-        android:id="@+id/squarePo"
-        android:layout_width="220dp"
-        android:layout_height="120dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="163dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="78dp"
-        android:background="#5F9866" />
-
-    <ImageView
-        android:id="@+id/icMot"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="173dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="85dp"
-        android:background="@drawable/mot" />
-
-    <TextView
-        android:id="@+id/tvMyPoint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="171dp"
-        android:layout_marginTop="168dp"
-        android:text="Điểm của tôi: "
-        android:textSize="20sp"
-        android:textColor="#FFFFFF" />
-
-    <TextView
-        android:id="@+id/tvMyPoint2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="332dp"
-        android:layout_marginTop="168dp"
-        android:text="Điểm "
-        android:textColor="#FFFFFF"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/tvPoint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="305dp"
-        android:layout_marginTop="168dp"
-        android:text="0"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp" />
 
     <LinearLayout
         android:id="@+id/LLline"
         android:layout_width="match_parent"
         android:layout_height="4dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="465dp"
+        android:layout_below="@+id/LL"
+        android:layout_marginTop="202dp"
         android:background="#5F9866"
         android:orientation="horizontal" />
 
@@ -129,6 +73,7 @@
         android:id="@+id/profileName"
         android:layout_width="300dp"
         android:layout_height="60dp"
+        android:background="@color/white"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="65dp"
@@ -140,6 +85,7 @@
         android:id="@+id/profilePhone"
         android:layout_width="300dp"
         android:layout_height="60dp"
+        android:background="@color/white"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="65dp"
@@ -151,6 +97,7 @@
         android:id="@+id/profileBirth"
         android:layout_width="300dp"
         android:layout_height="60dp"
+        android:background="@color/white"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="65dp"
@@ -162,6 +109,7 @@
         android:id="@+id/profileGen"
         android:layout_width="300dp"
         android:layout_height="60dp"
+        android:background="@color/white"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="65dp"
@@ -173,6 +121,7 @@
         android:id="@+id/profileAddr"
         android:layout_width="300dp"
         android:layout_height="60dp"
+        android:background="@color/white"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="65dp"

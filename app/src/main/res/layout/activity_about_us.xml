@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutUsActivity">
+
+    <LinearLayout
+        android:id="@+id/LLaboutUs"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#5F9866">
+
+        <ImageView
+            android:id="@+id/back8"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/baseline_arrow_back_24" />
+
+        <TextView
+            android:id="@+id/tvAbout"
+            android:layout_width="wrap_content"
+            android:layout_height="35sp"
+            android:layout_marginLeft="88dp"
+            android:text="Về chúng tôi"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LLaboutUs"
+        android:id="@+id/problem"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Vấn đề"
+            android:textColor="#5F9866"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:text="Ô nhiễm môi trường đã trở nên nghiêm trọng hơn trong những năm gần đây vì sự lãng phí mà con người tạo ra.
+\n
+Nhiều người nhận thức được rằng việc tái chế là quan trọng nhưng hầu hết họ thấy việc này không hấp dẫn hoặc không đáng công sức họ bỏ ra."/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/problem"
+        android:id="@+id/Solution"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Phương pháp chúng tôi cung cấp"
+            android:textColor="#5F9866"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:text=" Nhiều chất thải là vật liệu có thể dễ dàng tái chế hoặc thậm chí tái sử dụng.\n
+Chúng tôi tạo ra một ứng dụng có thể theo dõi quá trình tái chế. Tặng điểm cho người dùng bất cứ khi nào họ thuê chúng tôi dọn dẹp những nguyên liệu và cuối cùng sử dụng điểm để đổi quà."/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Solution"
+        android:id="@+id/vision"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Tầm nhìn của chúng tôi"
+            android:textColor="#5F9866"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:text=" Tầm nhìn của chúng tôi là cung cấp sự kết nối chặt chẽ giữa hoạt động tái chế và cuộc sống hàng ngày.
+\n
+
+Để khuyến khích và khiến mọi người tin rằng việc tái chế mà họ đang làm là có ý nghĩa và đáng khen thưởng, không chỉ để nhận thêm quà hay thu nhập."/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/vision"
+        android:id="@+id/mission"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Nhiệm vụ của chúng tôi"
+            android:textColor="#5F9866"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:text=" Nâng cao nhận thức của người dân về tái chế và ô nhiễm môi trường.
+\n
+
+Tạo thu nhập từ vật liệu tái chế vì thị trường ở Việt Nam còn nhỏ và kém cạnh tranh."/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mission"
+        android:id="@+id/coreValue"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Giá trị cốt lõi "
+            android:textColor="#5F9866"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:text=" CHO CỘNG ĐỒNG\nCHO MÔI TRƯỜNG\nTỪ THIỆN\nCÓ TRÁCH NHIỆM"/>
+    </LinearLayout>
+
+</RelativeLayout>
+</ScrollView>
