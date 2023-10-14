@@ -2,7 +2,9 @@ package com.example.exe201;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -31,12 +33,28 @@ public class ViewOrderActivity extends AppCompatActivity {
         arrayOrder = new ArrayList<>();
         adapter = new OrderAdapter(this, R.layout.order_row, arrayOrder);
         lvOrderList.setAdapter(adapter);
+        getView();
         lvOrderList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView txtAddress = (TextView) view.findViewById(R.id.tvAddress);
-                String destination = txtAddress.getText().toString();
-                getDirection(destination);
+                AlertDialog.Builder builder = new AlertDialog.Builder(ViewOrderActivity.this);
+                builder.setMessage("Bạn muốn đường đi tới địa chỉ này?")
+                        .setCancelable(true)
+                        .setPositiveButton("CÓ", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                String destination = arrayOrder.get(position).getAddress();
+                                getDirection(destination);
+                                dialogInterface.cancel();
+                            }
+                        })
+                        .setNegativeButton("KHÔNG", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.cancel();
+                            }
+                        })
+                        .show();
             }
         });
 
@@ -48,7 +66,6 @@ public class ViewOrderActivity extends AppCompatActivity {
                 finish();
             }
         });
-        getView();
     }
     private void getView(){
         Cursor cursor= DB.getOrder();
