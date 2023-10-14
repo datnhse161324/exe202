@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class ViewVoucherActivity extends AppCompatActivity {
     voucherAdapter adapter;
     DBHelper DB;
     int vitri;
+    TextView point;
     AlertDialog.Builder builder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class ViewVoucherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_voucher);
         btnBack= findViewById(R.id.back4);
         lvVoucher= findViewById(R.id.lvVoucher);
+        point= findViewById(R.id.tvPoint);
         builder= new AlertDialog.Builder(this);
         DB= new DBHelper(this);
         arrayVoucher= new ArrayList<>();
@@ -38,7 +41,12 @@ public class ViewVoucherActivity extends AppCompatActivity {
 
         Intent intent= getIntent();
         String username= intent.getStringExtra("user");
-
+        Cursor res= DB.getData(username);
+        int myPoint=0;
+        while (res.moveToNext()){
+            myPoint= res.getInt(9);
+        }
+        point.setText(String.valueOf(myPoint));
         getView();
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +104,9 @@ public class ViewVoucherActivity extends AppCompatActivity {
         }else {
             Boolean buy= DB.insertMyVoucher(username, voucher.getVoucherName(), getRanString(10));
             if(buy== true){
+                int a=myPoint- voucher.getVoucherPrice();
+                point.setText(String.valueOf(a));
+                DB.updatePoint(username,a);
                 Toast.makeText(ViewVoucherActivity.this, "Mua thành công",Toast.LENGTH_SHORT).show();
             }else {
                 Toast.makeText(ViewVoucherActivity.this, "Mua thất bại",Toast.LENGTH_SHORT).show();

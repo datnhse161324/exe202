@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView imgSet, imgVoucher, imgMaterial, imgMyVoucher, imgMyOrder;
+    ImageView imgSet, imgVoucher, imgMaterial, imgMyVoucher, imgMyOrder, imgAboutUs;
     ImageView imgProfile;
 
     @Override
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         imgMaterial= findViewById(R.id.viewMaterial);
         imgMyVoucher= findViewById(R.id.viewMyVoucher);
         imgMyOrder = findViewById(R.id.viewMyOrder);
+        imgAboutUs = findViewById(R.id.aboutUs);
 
         Intent intent= getIntent();
         String username= intent.getStringExtra("user");
@@ -81,6 +82,16 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent= new Intent(getApplicationContext(), ViewMyOrderActivity.class);
                 intent.putExtra("user",username);
                 startActivity(intent);
+            }
+        });
+
+        imgAboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(getApplicationContext(), AboutUsActivity.class);
+                intent.putExtra("user",username);
+                startActivity(intent);
+                finish();
             }
         });
     }

@@ -39,8 +39,8 @@ public class DBHelper extends SQLiteOpenHelper {
    //     myDB.execSQL("create Table UserVoucher (userVoucherID Integer Primary Key Autoincrement," +
     //            "userName nvarchar(20) references User,voucherName nvarchar(20) references Voucher, exchangeDate nvarchar(20))");
 
-        myDB.execSQL("create table if not exists UserOrder (orderID Integer Primary Key Autoincrement,orderCode nvarchar(20)," +
-                " userName nvarchar(20), materialAmount decimal, createDate nvarchar(20), status nvarchar(20), address nvarchar(50), orderDate nvarchar(20), orderTime nvarchar(20),Constraint fk_UserOrder Foreign Key (userName) references User(userName))");
+//        myDB.execSQL("create table if not exists UserOrder (orderID Integer Primary Key Autoincrement,orderCode nvarchar(20)," +
+//                " userName nvarchar(20), materialAmount decimal, createDate nvarchar(20), status nvarchar(20), address nvarchar(50), orderDate nvarchar(20), orderTime nvarchar(20),Constraint fk_UserOrder Foreign Key (userName) references User(userName))");
     }
 
     @Override
@@ -207,6 +207,13 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase myDB= this.getWritableDatabase();
         Cursor cursor= myDB.rawQuery("Select * from UserOrder where userName=?", new String[]{username});
         return cursor;
+    }
+
+    public void updatePoint(String username, int newPoint){
+        SQLiteDatabase myDB= this.getWritableDatabase();
+        ContentValues contentValues= new ContentValues();
+        contentValues.put("point", newPoint);
+        myDB.update("User",contentValues,"userName=?",new String[]{username});
     }
     private static String getRanString(int a){
         final String character= "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

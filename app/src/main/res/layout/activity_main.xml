@@ -219,4 +219,37 @@
         android:text="Lịch hẹn của tôi"
         android:textColor="#5F9866"
         android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/square6"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="261dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="461dp"
+        android:background="#5F9866" />
+    <ImageView
+        android:id="@+id/aboutUs"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="266dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="466dp"
+        android:background="@drawable/baseline_info_24" />
+    <TextView
+        android:id="@+id/tvAboutUs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="244dp"
+        android:layout_marginTop="512dp"
+        android:gravity="top"
+        android:text="Về chúng tôi"
+        android:textColor="#5F9866"
+        android:textStyle="bold" />
 </RelativeLayout>

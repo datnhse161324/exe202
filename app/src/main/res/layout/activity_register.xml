@@ -49,6 +49,7 @@
             android:layout_marginTop="108dp"
             android:background="#FFFFFF"
             android:hint="Mật khẩu"
+            android:inputType="textPassword"
             android:paddingLeft="5dp" />
 
         <EditText
@@ -61,6 +62,7 @@
             android:layout_marginTop="169dp"
             android:background="#FFFFFF"
             android:hint="Nhập lại mật khẩu"
+            android:inputType="textPassword"
             android:paddingLeft="5dp" />
 
         <EditText
