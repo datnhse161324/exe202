@@ -10,6 +10,7 @@ public class Order {
     private String address;
     private String orderDate;
     private String orderTime;
+    private int orderPoint;
 
     public Order(int orderID, String orderCode, String userName, double materialAmount, String createDate, String status, String address, String orderDate, String orderTime) {
         this.orderID = orderID;
@@ -21,6 +22,20 @@ public class Order {
         this.address = address;
         this.orderDate = orderDate;
         this.orderTime = orderTime;
+        this.orderPoint = 0;
+    }
+
+    public Order(int orderID, String orderCode, String userName, double materialAmount, String createDate, String status, String address, String orderDate, String orderTime, int orderPoint) {
+        this.orderID = orderID;
+        this.orderCode = orderCode;
+        this.userName = userName;
+        this.materialAmount = materialAmount;
+        this.createDate = createDate;
+        this.status = status;
+        this.address = address;
+        this.orderDate = orderDate;
+        this.orderTime = orderTime;
+        this.orderPoint = orderPoint;
     }
 
     public int getOrderID() {
@@ -93,5 +108,13 @@ public class Order {
 
     public void setOrderTime(String orderTime) {
         this.orderTime = orderTime;
+    }
+
+    public int getOrderPoint() {
+        return orderPoint;
+    }
+
+    public void setOrderPoint(int orderPoint) {
+        this.orderPoint = orderPoint;
     }
 }

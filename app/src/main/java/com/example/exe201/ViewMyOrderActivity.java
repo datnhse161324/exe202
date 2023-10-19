@@ -64,7 +64,8 @@ public class ViewMyOrderActivity extends AppCompatActivity {
                 String address = cursor.getString(6);
                 String orderDate = cursor.getString(7);
                 String orderTime = cursor.getString(8);
-                arrayOrder.add(new Order(orderId, orderCode, userName, materialAmount, createDate, status,address,orderDate, orderTime));
+                int orderPoint = cursor.getInt(9);
+                arrayOrder.add(new Order(orderId, orderCode, userName, materialAmount, createDate, status,address,orderDate, orderTime, orderPoint));
             }
         }else{
             Toast.makeText(ViewMyOrderActivity.this, "Bạn chưa đặt lịch nào", Toast.LENGTH_SHORT).show();

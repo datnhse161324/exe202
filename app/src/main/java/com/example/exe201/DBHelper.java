@@ -195,6 +195,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("address", address);
         contentValues.put("orderDate", orderDate);
         contentValues.put("orderTime", orderTime);
+        contentValues.put("orderPoint", 0);
         long result= myDB.insert("UserOrder",null, contentValues);
         if (result==-1)
             return false;

@@ -18,6 +18,8 @@ import com.example.exe201.R;
 import com.example.exe201.ViewOrderActivity;
 import com.example.exe201.models.Order;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class OrderAdapter extends BaseAdapter {
@@ -57,6 +59,7 @@ public class OrderAdapter extends BaseAdapter {
         TextView txtOrderTime = (TextView) view.findViewById(R.id.tvOrderTime);
         TextView txtAddress = (TextView) view.findViewById(R.id.tvAddress);
         TextView txtStatus = (TextView) view.findViewById(R.id.tvStatus);
+        TextView txtPoint = (TextView) view.findViewById(R.id.tvOrderPoint);
 
         Order order = orderList.get(position);
         txtCode.setText(order.getOrderCode());
@@ -65,6 +68,7 @@ public class OrderAdapter extends BaseAdapter {
         txtOrderTime.setText(order.getOrderTime());
         txtAddress.setText(order.getAddress());
         txtStatus.setText(order.getStatus());
+        txtPoint.setText(String.valueOf(order.getOrderPoint()));
         if(context instanceof ViewOrderActivity){
             Button btnStatus = view.findViewById(R.id.btnStatus);
             Button btnGuide = view.findViewById((R.id.btnGuide));
