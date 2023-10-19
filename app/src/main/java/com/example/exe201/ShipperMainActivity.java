@@ -9,14 +9,15 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 public class ShipperMainActivity extends AppCompatActivity {
-    ImageView imgOrderList;
+    LinearLayout imgOrderList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shipper_main);
-        imgOrderList = findViewById(R.id.ivOrderList);
+        imgOrderList = findViewById(R.id.layoutOrderList);
         checkPermission();
         GpsUtils gpsUtils = new GpsUtils(ShipperMainActivity.this);
         gpsUtils.statusCheck();

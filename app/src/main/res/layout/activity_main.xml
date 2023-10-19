@@ -4,252 +4,343 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/RLupper"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:background="@drawable/start">
-
-        <LinearLayout
-            android:id="@+id/LLupper"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
+        android:layout_margin="3dp"
+        android:elevation="10dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="150dp"
+            android:background="@drawable/start"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/LLupper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/message"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/mes"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/profile"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/self"
+                    android:maxWidth="30dp"
+                    android:maxHeight="30dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
-                android:id="@+id/message"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/mes" />
-
-            <ImageView
-                android:id="@+id/profile"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/self" />
-        </LinearLayout>
-        <ImageView
-            android:id="@+id/mot3"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="105dp"
-            android:layout_marginTop="55dp"
-            android:background="@drawable/mot" />
-    </RelativeLayout>
-
-    <GridLayout
+                android:id="@+id/mot3"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/mot"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/LLupper"
+                app:layout_constraintTop_toTopOf="@+id/LLupper" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/RLupper">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp">
+                <LinearLayout
+                    android:id="@+id/layoutSetCalen"
+                    android:layout_width="160dp"
+                    android:layout_height="170dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/layoutViewVoucher"
+                    android:padding="15dp"
+                    app:layout_constraintDimensionRatio="H,1:1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@color/white">
+                    <ImageView
+                        android:id="@+id/setCalen"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        android:contentDescription="@string/app_name"
+                        android:padding="8dp"
+                        android:background="@drawable/set"
+                        android:backgroundTint="@color/primary"/>
+                    <TextView
+                        android:id="@+id/tvSet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Đặt lịch hẹn"
+                        android:textColor="@color/primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/layoutViewVoucher"
+                    android:layout_width="160dp"
+                    android:layout_height="170dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toEndOf="@+id/layoutSetCalen"
+                    android:padding="15dp"
+                    app:layout_constraintDimensionRatio="H,1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@color/white">
+                    <ImageView
+                        android:id="@+id/viewVoucher"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        android:contentDescription="@string/app_name"
+                        android:padding="8dp"
+                        android:background="@drawable/voucher"
+                        android:backgroundTint="@color/primary"/>
+                    <TextView
+                        android:id="@+id/tvVoucher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Cửa hàng quà"
+                        android:textColor="@color/primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp">
+                <LinearLayout
+                    android:id="@+id/layoutViewMaterial"
+                    android:layout_width="160dp"
+                    android:layout_height="170dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/layoutViewMyVoucher"
+                    android:padding="15dp"
+                    app:layout_constraintDimensionRatio="H,1:1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@color/white">
+                    <ImageView
+                        android:id="@+id/viewMaterial"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        android:contentDescription="@string/app_name"
+                        android:padding="8dp"
+                        android:background="@drawable/mot"
+                        android:backgroundTint="@color/primary"/>
+                    <TextView
+                        android:id="@+id/tvMaterial"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Bảng giá vật liệu"
+                        android:textColor="@color/primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/layoutViewMyVoucher"
+                    android:layout_width="160dp"
+                    android:layout_height="170dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toEndOf="@+id/layoutViewMaterial"
+                    android:padding="15dp"
+                    app:layout_constraintDimensionRatio="H,1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@color/white">
+                    <ImageView
+                        android:id="@+id/viewMyVoucher"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        android:contentDescription="@string/app_name"
+                        android:padding="8dp"
+                        android:background="@drawable/my_voucher"
+                        android:backgroundTint="@color/primary"/>
+                    <TextView
+                        android:id="@+id/tvMyVoucher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Voucher của bạn"
+                        android:textColor="@color/primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp">
+                <LinearLayout
+                    android:id="@+id/layoutViewMyOrder"
+                    android:layout_width="160dp"
+                    android:layout_height="170dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/layoutAboutUs"
+                    android:padding="15dp"
+                    app:layout_constraintDimensionRatio="H,1:1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@color/white">
+                    <ImageView
+                        android:id="@+id/viewMyOrder"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        android:contentDescription="@string/app_name"
+                        android:padding="8dp"
+                        android:background="@drawable/baseline_list_24"
+                        android:backgroundTint="@color/primary"/>
+                    <TextView
+                        android:id="@+id/tvMyOrder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="lịch hẹn của bạn"
+                        android:textColor="@color/primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/layoutAboutUs"
+                    android:layout_width="160dp"
+                    android:layout_height="170dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toEndOf="@+id/layoutViewMyOrder"
+                    android:padding="15dp"
+                    app:layout_constraintDimensionRatio="H,1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@color/white">
+                    <ImageView
+                        android:id="@+id/aboutUs"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        android:contentDescription="@string/app_name"
+                        android:padding="8dp"
+                        android:background="@drawable/baseline_info_24"
+                        android:backgroundTint="@color/primary"/>
+                    <TextView
+                        android:id="@+id/tvAboutUs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Về chúng tôi"
+                        android:textColor="@color/primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
 
-    </GridLayout>
-    <ImageView
-        android:id="@+id/square1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="93dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="232dp"
-        android:background="#5F9866" />
-    <ImageView
-        android:id="@+id/setCalen"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="97dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="237dp"
-        android:background="@drawable/set" />
-    <TextView
-        android:id="@+id/tvSet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="75dp"
-        android:layout_marginTop="282dp"
-        android:gravity="top"
-        android:text="Đặt lịch hẹn"
-        android:textColor="#5F9866"
-        android:textStyle="bold" />
+<!--    <ImageView-->
+<!--        android:id="@+id/square5"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_marginStart="93dp"-->
+<!--        android:layout_marginLeft="15dp"-->
+<!--        android:layout_marginTop="461dp"-->
+<!--        android:background="#5F9866" />-->
+<!--    <ImageView-->
+<!--        android:id="@+id/viewMyOrder"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_marginStart="98dp"-->
+<!--        android:layout_marginLeft="15dp"-->
+<!--        android:layout_marginTop="466dp"-->
+<!--        android:background="@drawable/baseline_list_24" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/tvMyOrder"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_marginLeft="65dp"-->
+<!--        android:layout_marginTop="512dp"-->
+<!--        android:gravity="top"-->
+<!--        android:text="Lịch hẹn của tôi"-->
+<!--        android:textColor="#5F9866"-->
+<!--        android:textStyle="bold" />-->
 
-    <ImageView
-        android:id="@+id/square2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="261dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="233dp"
-        android:background="#5F9866" />
-    <ImageView
-        android:id="@+id/viewVoucher"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="266dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="238dp"
-        android:background="@drawable/voucher" />
-    <TextView
-        android:id="@+id/tvVoucher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="244dp"
-        android:layout_marginTop="278dp"
-        android:gravity="top"
-        android:text="Cửa hàng quà"
-        android:textColor="#5F9866"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/square3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="93dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="347dp"
-        android:background="#5F9866" />
-    <ImageView
-        android:id="@+id/viewMaterial"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="98dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="352dp"
-        android:background="@drawable/mot" />
-    <TextView
-        android:id="@+id/tvMaterial"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="398dp"
-        android:gravity="top"
-        android:text="Bảng giá vật liệu"
-        android:textColor="#5F9866"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/square4"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="261dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="347dp"
-        android:background="#5F9866" />
-    <ImageView
-        android:id="@+id/viewMyVoucher"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="266dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="352dp"
-        android:background="@drawable/my_voucher" />
-    <TextView
-        android:id="@+id/tvMyVoucher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="232dp"
-        android:layout_marginTop="397dp"
-        android:gravity="top"
-        android:text="Voucher của tôi"
-        android:textColor="#5F9866"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/square5"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="93dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="461dp"
-        android:background="#5F9866" />
-    <ImageView
-        android:id="@+id/viewMyOrder"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="98dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="466dp"
-        android:background="@drawable/baseline_list_24" />
-    <TextView
-        android:id="@+id/tvMyOrder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="65dp"
-        android:layout_marginTop="512dp"
-        android:gravity="top"
-        android:text="Lịch hẹn của tôi"
-        android:textColor="#5F9866"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/square6"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="261dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="461dp"
-        android:background="#5F9866" />
-    <ImageView
-        android:id="@+id/aboutUs"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="266dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="466dp"
-        android:background="@drawable/baseline_info_24" />
-    <TextView
-        android:id="@+id/tvAboutUs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="244dp"
-        android:layout_marginTop="512dp"
-        android:gravity="top"
-        android:text="Về chúng tôi"
-        android:textColor="#5F9866"
-        android:textStyle="bold" />
+<!--    <ImageView-->
+<!--        android:id="@+id/square6"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_marginStart="261dp"-->
+<!--        android:layout_marginLeft="15dp"-->
+<!--        android:layout_marginTop="461dp"-->
+<!--        android:background="#5F9866" />-->
+<!--    <ImageView-->
+<!--        android:id="@+id/aboutUs"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_marginStart="266dp"-->
+<!--        android:layout_marginLeft="15dp"-->
+<!--        android:layout_marginTop="466dp"-->
+<!--        android:background="@drawable/baseline_info_24" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/tvAboutUs"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_marginLeft="244dp"-->
+<!--        android:layout_marginTop="512dp"-->
+<!--        android:gravity="top"-->
+<!--        android:text="Về chúng tôi"-->
+<!--        android:textColor="#5F9866"-->
+<!--        android:textStyle="bold" />-->
 </RelativeLayout>

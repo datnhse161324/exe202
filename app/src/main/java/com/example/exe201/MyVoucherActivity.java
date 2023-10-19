@@ -43,9 +43,6 @@ public class MyVoucherActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("user",username);
-                startActivity(intent);
                 finish();
             }
         });

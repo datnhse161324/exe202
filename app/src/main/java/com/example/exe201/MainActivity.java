@@ -6,23 +6,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView imgSet, imgVoucher, imgMaterial, imgMyVoucher, imgMyOrder, imgAboutUs;
+    LinearLayout imgSet, imgVoucher, imgMaterial, imgMyVoucher, imgMyOrder, imgAboutUs;
     ImageView imgProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        imgSet= findViewById(R.id.setCalen);
-        imgVoucher= findViewById(R.id.viewVoucher);
+        imgSet= findViewById(R.id.layoutSetCalen);
+        imgVoucher= findViewById(R.id.layoutViewVoucher);
         imgProfile= findViewById(R.id.profile);
-        imgMaterial= findViewById(R.id.viewMaterial);
-        imgMyVoucher= findViewById(R.id.viewMyVoucher);
-        imgMyOrder = findViewById(R.id.viewMyOrder);
-        imgAboutUs = findViewById(R.id.aboutUs);
+        imgMaterial= findViewById(R.id.layoutViewMaterial);
+        imgMyVoucher= findViewById(R.id.layoutViewMyVoucher);
+        imgMyOrder = findViewById(R.id.layoutViewMyOrder);
+        imgAboutUs = findViewById(R.id.layoutAboutUs);
 
         Intent intent= getIntent();
         String username= intent.getStringExtra("user");
@@ -42,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent= new Intent(getApplicationContext(), ViewProfileActivity.class);
                 intent.putExtra("user",username);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent= new Intent(getApplicationContext(), ViewVoucherActivity.class);
                 intent.putExtra("user",username);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -62,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent= new Intent(getApplicationContext(), ViewMaterialActivity.class);
                 intent.putExtra("user",username);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -72,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent= new Intent(getApplicationContext(), MyVoucherActivity.class);
                 intent.putExtra("user",username);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -91,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent= new Intent(getApplicationContext(), AboutUsActivity.class);
                 intent.putExtra("user",username);
                 startActivity(intent);
-                finish();
             }
         });
     }
