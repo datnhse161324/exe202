@@ -25,7 +25,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="55dp"
         android:layout_marginTop="179dp"
-        android:background="#5F9866">
+        android:background="@drawable/layout_dg"
+        android:backgroundTint="@color/primary">
 
         <EditText
             android:id="@+id/RUsername"
@@ -35,7 +36,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="45dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/layout_dg"
             android:hint="Tên đăng nhập"
             android:paddingLeft="5dp" />
 
@@ -47,7 +48,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="108dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/layout_dg"
             android:hint="Mật khẩu"
             android:inputType="textPassword"
             android:paddingLeft="5dp" />
@@ -60,7 +61,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="169dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/layout_dg"
             android:hint="Nhập lại mật khẩu"
             android:inputType="textPassword"
             android:paddingLeft="5dp" />
@@ -73,7 +74,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="233dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/layout_dg"
             android:hint="Số điện thoại"
             android:paddingLeft="5dp" />
 
@@ -85,7 +86,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="294dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/layout_dg"
             android:hint="Địa chỉ"
             android:paddingLeft="5dp" />
 

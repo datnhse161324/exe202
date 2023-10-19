@@ -2,18 +2,15 @@ package com.example.exe201;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
+
+import com.example.exe201.adapters.OrderAdapter;
+import com.example.exe201.models.Order;
 
 import java.util.ArrayList;
 

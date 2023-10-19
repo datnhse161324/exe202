@@ -1,4 +1,4 @@
-package com.example.exe201;
+package com.example.exe201.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.exe201.R;
+import com.example.exe201.models.Material;
 
 import java.util.List;
 

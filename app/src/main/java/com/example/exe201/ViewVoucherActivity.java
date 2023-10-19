@@ -14,6 +14,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.exe201.adapters.voucherAdapter;
+import com.example.exe201.models.Voucher;
+
 import java.util.ArrayList;
 import java.util.Random;
 

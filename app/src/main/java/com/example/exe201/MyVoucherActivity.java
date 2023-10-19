@@ -10,10 +10,12 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.example.exe201.adapters.MyVoucherAdapter;
+import com.example.exe201.models.MyVoucher;
 
 import java.util.ArrayList;
 

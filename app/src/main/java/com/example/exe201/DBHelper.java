@@ -36,17 +36,20 @@ public class DBHelper extends SQLiteOpenHelper {
         myDB.execSQL("create Table Voucher (voucherID Integer Primary Key Autoincrement," +
                 "voucherName nvarchar(20), expiredDate nvarchar(20), voucherPrice Integer, description nvarchar(50))");
 
-   //     myDB.execSQL("create Table UserVoucher (userVoucherID Integer Primary Key Autoincrement," +
-    //            "userName nvarchar(20) references User,voucherName nvarchar(20) references Voucher, exchangeDate nvarchar(20))");
+        myDB.execSQL("create Table UserVoucher (userVoucherID Integer Primary Key Autoincrement," +
+                "userName nvarchar(20) references User,voucherName nvarchar(20) references Voucher, exchangeDate nvarchar(20))");
 
-//        myDB.execSQL("create table if not exists UserOrder (orderID Integer Primary Key Autoincrement,orderCode nvarchar(20)," +
-//                " userName nvarchar(20), materialAmount decimal, createDate nvarchar(20), status nvarchar(20), address nvarchar(50), orderDate nvarchar(20), orderTime nvarchar(20),Constraint fk_UserOrder Foreign Key (userName) references User(userName))");
+        myDB.execSQL("create table UserOrder (orderID Integer Primary Key Autoincrement,orderCode nvarchar(20)," +
+                " userName nvarchar(20), materialAmount decimal,createDate nvarchar(20), status nvarchar(20), address nvarchar(50)," +
+                " orderDate nvarchar(20), orderTime nvarchar(20), orderPoint Integer,Constraint fk_UserOrder foreign Key (userName) references User(userName))");
+        myDB.execSQL("Create Table if not exists Material (materialID Integer Primary Key Autoincrement," +
+                "materialName nvarchar(20), unitPrice Integer)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase myDB, int i, int i1) {
         myDB.execSQL("drop Table if exists User");
-        myDB.execSQL("drop Table if exists Orders");
+        myDB.execSQL("drop Table if exists UserOrder");
         myDB.execSQL("drop Table if exists Voucher");
         myDB.execSQL("drop Table if exists UserVoucher");
         myDB.execSQL("drop Table if exists Material");

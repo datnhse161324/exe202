@@ -9,6 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.example.exe201.adapters.OrderAdapter;
+import com.example.exe201.models.Order;
 
 import java.util.ArrayList;
 
@@ -44,9 +48,12 @@ public class ViewMyOrderActivity extends AppCompatActivity {
     }
 
     private void getView(String username){
+        DB.queryData("create table if not exists UserOrder (orderID Integer Primary Key Autoincrement,orderCode nvarchar(20)," +
+                "userName nvarchar(20), materialAmount decimal, createDate nvarchar(20), status nvarchar(20), address nvarchar(50)," +
+                "orderDate nvarchar(20), orderTime nvarchar(20), orderPoint Integer,Constraint fk_UserOrder Foreign Key (userName) references User(userName))");
         Cursor cursor= DB.getMyOrder(username);
-        arrayOrder.clear();
         if(cursor.getCount()>0){
+            arrayOrder.clear();
             while (cursor.moveToNext()){
                 int orderId = cursor.getInt(0);
                 String orderCode = cursor.getString(1);
@@ -59,6 +66,9 @@ public class ViewMyOrderActivity extends AppCompatActivity {
                 String orderTime = cursor.getString(8);
                 arrayOrder.add(new Order(orderId, orderCode, userName, materialAmount, createDate, status,address,orderDate, orderTime));
             }
+        }else{
+            Toast.makeText(ViewMyOrderActivity.this, "Bạn chưa đặt lịch nào", Toast.LENGTH_SHORT).show();
+            finish();
         }
         adapter.notifyDataSetChanged();
     }

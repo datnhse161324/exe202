@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.example.exe201.adapters.MaterialAdapter;
+import com.example.exe201.models.Material;
+
 import java.util.ArrayList;
 
 public class ViewMaterialActivity extends AppCompatActivity {
@@ -47,6 +50,10 @@ public class ViewMaterialActivity extends AppCompatActivity {
                 "materialName nvarchar(20), unitPrice Integer)");
 //        DB.queryDataMaterial();
         Cursor dataMaterial= DB.getVMaterial();
+        if(dataMaterial.getCount()<=0){
+            DB.queryDataMaterial();
+            getView();
+        }
         arrayMaterial.clear();
         while (dataMaterial.moveToNext()){
             String ten= dataMaterial.getString(1);

@@ -1,13 +1,10 @@
-package com.example.exe201;
+package com.example.exe201.adapters;
 
-import android.Manifest;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +13,10 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.example.exe201.DBHelper;
+import com.example.exe201.R;
+import com.example.exe201.ViewOrderActivity;
+import com.example.exe201.models.Order;
 
 import java.util.List;
 
@@ -70,7 +65,7 @@ public class OrderAdapter extends BaseAdapter {
         txtOrderTime.setText(order.getOrderTime());
         txtAddress.setText(order.getAddress());
         txtStatus.setText(order.getStatus());
-        if(context instanceof  ViewOrderActivity){
+        if(context instanceof ViewOrderActivity){
             Button btnStatus = view.findViewById(R.id.btnStatus);
             Button btnGuide = view.findViewById((R.id.btnGuide));
             btnStatus.setOnClickListener(v->{

@@ -1,4 +1,4 @@
-package com.example.exe201;
+package com.example.exe201.models;
 
 public class Order {
     private int orderID;
