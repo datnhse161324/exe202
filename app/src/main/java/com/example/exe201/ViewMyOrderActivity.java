@@ -48,9 +48,9 @@ public class ViewMyOrderActivity extends AppCompatActivity {
     }
 
     private void getView(String username){
-        DB.queryData("create table if not exists UserOrder (orderID Integer Primary Key Autoincrement,orderCode nvarchar(20)," +
-                "userName nvarchar(20), materialAmount decimal, createDate nvarchar(20), status nvarchar(20), address nvarchar(50)," +
-                "orderDate nvarchar(20), orderTime nvarchar(20), orderPoint Integer,Constraint fk_UserOrder Foreign Key (userName) references User(userName))");
+        DB.queryData("create table if not exists Orders (orderID Integer Primary Key Autoincrement,orderCode nvarchar(20)," +
+                "userName nvarchar(20), materialAmount decimal, createDate nvarchar(20), status nvarchar(20), getAddress nvarchar(50)," +
+                "getDate nvarchar(20), getTime nvarchar(20), orderPoint Integer,Constraint fk_UserOrder Foreign Key (userName) references User(userName))");
         Cursor cursor= DB.getMyOrder(username);
         if(cursor.getCount()>0){
             arrayOrder.clear();

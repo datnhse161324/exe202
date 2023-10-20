@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.exe201.adapters.OrderAdapter;
 import com.example.exe201.models.Order;
@@ -41,6 +42,9 @@ public class ViewOrderActivity extends AppCompatActivity {
         });
     }
     private void getView(){
+        DB.queryData("create table if not exists Orders (orderID Integer Primary Key Autoincrement,orderCode nvarchar(20)," +
+                "userName nvarchar(20), materialAmount decimal, createDate nvarchar(20), status nvarchar(20), getAddress nvarchar(50)," +
+                "getDate nvarchar(20), getTime nvarchar(20), orderPoint Integer,Constraint fk_UserOrder Foreign Key (userName) references User(userName))");
         Cursor cursor= DB.getOrder();
         arrayOrder.clear();
         if(cursor.getCount()>0) {
@@ -57,6 +61,9 @@ public class ViewOrderActivity extends AppCompatActivity {
                 int orderPoint = cursor.getInt(9);
                 arrayOrder.add(new Order(orderId, orderCode, userName, materialAmount, createDate, status,address,orderDate, orderTime, orderPoint));
             }
+        }else{
+            Toast.makeText(ViewOrderActivity.this, "Chưa có lịch hẹn", Toast.LENGTH_SHORT).show();
+            finish();
         }
         adapter.notifyDataSetChanged();
     }

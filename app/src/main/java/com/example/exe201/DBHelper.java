@@ -39,9 +39,9 @@ public class DBHelper extends SQLiteOpenHelper {
         myDB.execSQL("create Table UserVoucher (userVoucherID Integer Primary Key Autoincrement," +
                 "userName nvarchar(20) references User,voucherName nvarchar(20) references Voucher, exchangeDate nvarchar(20))");
 
-        myDB.execSQL("create table UserOrder (orderID Integer Primary Key Autoincrement,orderCode nvarchar(20)," +
-                " userName nvarchar(20), materialAmount decimal,createDate nvarchar(20), status nvarchar(20), address nvarchar(50)," +
-                " orderDate nvarchar(20), orderTime nvarchar(20), orderPoint Integer,Constraint fk_UserOrder foreign Key (userName) references User(userName))");
+        myDB.execSQL("create table Orders (orderID Integer Primary Key Autoincrement,orderCode nvarchar(20)," +
+                " userName nvarchar(20), materialAmount decimal,createDate nvarchar(20), status nvarchar(20), getAddress nvarchar(50)," +
+                " getDate nvarchar(20), getTime nvarchar(20), orderPoint Integer,Constraint fk_UserOrder foreign Key (userName) references User(userName))");
         myDB.execSQL("Create Table if not exists Material (materialID Integer Primary Key Autoincrement," +
                 "materialName nvarchar(20), unitPrice Integer)");
     }
@@ -49,7 +49,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase myDB, int i, int i1) {
         myDB.execSQL("drop Table if exists User");
-        myDB.execSQL("drop Table if exists UserOrder");
+        myDB.execSQL("drop Table if exists Orders");
         myDB.execSQL("drop Table if exists Voucher");
         myDB.execSQL("drop Table if exists UserVoucher");
         myDB.execSQL("drop Table if exists Material");
@@ -192,11 +192,11 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("orderCode",getRanString(10));
         contentValues.put("createDate",day+"/"+month+"/"+year);
         contentValues.put("status","waiting");
-        contentValues.put("address", address);
-        contentValues.put("orderDate", orderDate);
-        contentValues.put("orderTime", orderTime);
+        contentValues.put("getAddress", address);
+        contentValues.put("getDate", orderDate);
+        contentValues.put("getTime", orderTime);
         contentValues.put("orderPoint", 0);
-        long result= myDB.insert("UserOrder",null, contentValues);
+        long result= myDB.insert("Orders",null, contentValues);
         if (result==-1)
             return false;
         else
@@ -206,7 +206,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase myDB= this.getWritableDatabase();
         ContentValues contentValues= new ContentValues();
         contentValues.put("status", status);
-        long result= myDB.update("UserOrder",contentValues,"orderCode=?", new String[]{orderCode});
+        long result= myDB.update("Orders",contentValues,"orderCode=?", new String[]{orderCode});
         if (result==-1)
             return false;
         else
@@ -214,12 +214,12 @@ public class DBHelper extends SQLiteOpenHelper {
     }
     public Cursor getOrder(){
         SQLiteDatabase myDB= this.getWritableDatabase();
-        Cursor cursor= myDB.rawQuery("Select * from UserOrder order by orderDate",null);
+        Cursor cursor= myDB.rawQuery("Select * from Orders order by getDate",null);
         return cursor;
     }
     public Cursor getMyOrder(String username){
         SQLiteDatabase myDB= this.getWritableDatabase();
-        Cursor cursor= myDB.rawQuery("Select * from UserOrder where userName=?", new String[]{username});
+        Cursor cursor= myDB.rawQuery("Select * from Orders where userName=?", new String[]{username});
         return cursor;
     }
 
