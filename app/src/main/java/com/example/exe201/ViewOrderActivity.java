@@ -1,11 +1,17 @@
 package com.example.exe201;
 
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Dialog;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -21,6 +27,7 @@ public class ViewOrderActivity extends AppCompatActivity {
     ListView lvOrderList;
     OrderAdapter adapter;
     ArrayList<Order> arrayOrder;
+    int vitri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +45,21 @@ public class ViewOrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        lvOrderList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                vitri= i;
+                Order order= arrayOrder.get(i);
+                String name= order.getUserName();
+                if(order.getStatus().equals("waiting")){
+                    dialogThem(name);
+                    DB.updateOrderStatus(order.getOrderCode(),"done");
+                }else {
+                    Toast.makeText(ViewOrderActivity.this, "Đơn đã hoàn tất", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -66,6 +88,47 @@ public class ViewOrderActivity extends AppCompatActivity {
             finish();
         }
         adapter.notifyDataSetChanged();
+    }
+
+    private void dialogThem(String name){
+        Dialog dialog= new Dialog(this);
+        dialog.setContentView(R.layout.dialog_price);
+
+        EditText editTen= (EditText) dialog.findViewById(R.id.editTextSua);
+        Button btnThem= (Button) dialog.findViewById(R.id.buttonSua);
+        Button btnTHuy= (Button) dialog.findViewById(R.id.buttonHuy);
+        btnThem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String ten =editTen.getText().toString();
+                if(ten.equals("")){
+                    Toast.makeText(ViewOrderActivity.this,"Vui lòng nhập số tiền !",Toast.LENGTH_SHORT).show();
+                }else {
+                    int temp=0;
+                    temp= Integer.getInteger(String.valueOf(editTen.getText()));
+                    Cursor res= DB.getData(name);
+                    if(res.getCount()== 0){
+                        Toast.makeText(ViewOrderActivity.this, "Lỗi", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    int myPoint=0;
+                    while (res.moveToNext()){
+                        myPoint= res.getInt(9);
+                    }
+                    int a= myPoint+ (temp/10);
+                    DB.updatePoint(name,a);
+                    Toast.makeText(ViewOrderActivity.this,"Đã hoàn tất đơn",Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                }
+            }
+        });
+        btnTHuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 
 }
