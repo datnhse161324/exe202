@@ -37,13 +37,15 @@ public class DBHelper extends SQLiteOpenHelper {
                 "voucherName nvarchar(20), expiredDate nvarchar(20), voucherPrice Integer, description nvarchar(50))");
 
         myDB.execSQL("create Table UserVoucher (userVoucherID Integer Primary Key Autoincrement," +
-                "userName nvarchar(20) references User,voucherName nvarchar(20) references Voucher, exchangeDate nvarchar(20))");
+                "userName nvarchar(20) references User,voucherName nvarchar(20) references Voucher,voucherCode nvarchar(20), exchangeDate nvarchar(20))");
 
         myDB.execSQL("create table Orders (orderID Integer Primary Key Autoincrement,orderCode nvarchar(20)," +
-                " userName nvarchar(20), materialAmount decimal,createDate nvarchar(20), status nvarchar(20), getAddress nvarchar(50)," +
-                " getDate nvarchar(20), getTime nvarchar(20), orderPoint Integer,Constraint fk_UserOrder foreign Key (userName) references User(userName))");
+                " userName nvarchar(20) references User, materialAmount decimal,createDate nvarchar(20), status nvarchar(20), getAddress nvarchar(50)," +
+                " getDate nvarchar(20), getTime nvarchar(20), orderPoint Integer)");
         myDB.execSQL("Create Table if not exists Material (materialID Integer Primary Key Autoincrement," +
                 "materialName nvarchar(20), unitPrice Integer)");
+        myDB.execSQL("create table if not exists OrderDetail (orderCode nvarchar(20) references Orders," +
+                " materialName nvarchar(20) references Material, materialAmount decimal, Primary key (orderCode,materialName))");
     }
 
     @Override
@@ -53,6 +55,7 @@ public class DBHelper extends SQLiteOpenHelper {
         myDB.execSQL("drop Table if exists Voucher");
         myDB.execSQL("drop Table if exists UserVoucher");
         myDB.execSQL("drop Table if exists Material");
+        myDB.execSQL("drop Table if exists OrderDetail");
         onCreate(myDB);
     }
 
@@ -142,12 +145,16 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase myDB= this.getWritableDatabase();
         Cursor cursor=myDB.rawQuery("Select * from UserVoucher",null);
         int tem= cursor.getCount();
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
         ContentValues contentValues= new ContentValues();
-        contentValues.put("voucherOrderID", tem);
+        contentValues.put("userVoucherID", tem);
         contentValues.put("userName", username);
         contentValues.put("voucherName", vouchername);
         contentValues.put("voucherCode", vouchercode);
-        contentValues.put("exchangeDate", "07/10/2023");
+        contentValues.put("exchangeDate", day+"/"+month+"/"+year);
         long result= myDB.insert("UserVoucher",null, contentValues);
         if (result==-1)
             return false;
@@ -180,7 +187,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public boolean insertOrder(String userName, String address, String orderTime, String orderDate){
         SQLiteDatabase myDB= this.getWritableDatabase();
-        Cursor cursor=myDB.rawQuery("Select * from UserOrder",null);
+        Cursor cursor=myDB.rawQuery("Select * from Orders",null);
         int tem= cursor.getCount();
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
@@ -197,6 +204,28 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("getTime", orderTime);
         contentValues.put("orderPoint", 0);
         long result= myDB.insert("Orders",null, contentValues);
+        if (result==-1)
+            return false;
+        else
+            return true;
+    }
+    public boolean insertOrderDetail(String orderCode, String materialName, double materialAmount){
+        SQLiteDatabase myDB= this.getWritableDatabase();
+        ContentValues contentValues= new ContentValues();
+        contentValues.put("orderCode",orderCode);
+        contentValues.put("materialName",materialName);
+        contentValues.put("materialAmount",materialAmount);
+        long result= myDB.insert("Orders",null, contentValues);
+        if (result==-1)
+            return false;
+        else
+            return true;
+    }
+    public boolean updateOrderDetail(String orderCode, String materialName, double materialAmount){
+        SQLiteDatabase myDB= this.getWritableDatabase();
+        ContentValues contentValues= new ContentValues();
+        contentValues.put("materialAmount",materialAmount);
+        long result= myDB.update("Orders",contentValues,"orderCode=? AND materialName = ?", new String[]{orderCode,materialName});
         if (result==-1)
             return false;
         else
@@ -219,7 +248,12 @@ public class DBHelper extends SQLiteOpenHelper {
     }
     public Cursor getMyOrder(String username){
         SQLiteDatabase myDB= this.getWritableDatabase();
-        Cursor cursor= myDB.rawQuery("Select * from Orders where userName=?", new String[]{username});
+        Cursor cursor= myDB.rawQuery("Select * from Orders where userName=? order by getDate", new String[]{username});
+        return cursor;
+    }
+    public Cursor getOrderDetail(String orderCode){
+        SQLiteDatabase myDB= this.getWritableDatabase();
+        Cursor cursor= myDB.rawQuery("Select * from OrderDetail where userCode=? order by getDate", new String[]{orderCode});
         return cursor;
     }
 

@@ -85,8 +85,8 @@ public class ViewVoucherActivity extends AppCompatActivity {
     }
 
     private void insertMyVoucher() {
-        DB.queryData("Create Table if not exists UserVoucher (voucherOrderID Integer Primary Key Autoincrement," +
-                "userName nvarchar(20), voucherName nvarchar(20), voucherCode nvarchar(20), exchangeDate nvarchar(20),Constraint fk_User Foreign Key (userName) references User(userName))");
+        DB.queryData("create Table if not exists UserVoucher (userVoucherID Integer Primary Key Autoincrement," +
+                "userName nvarchar(20) references User,voucherName nvarchar(20) references Voucher,voucherCode nvarchar(20), exchangeDate nvarchar(20))");
         Intent intent= getIntent();
         String username= intent.getStringExtra("user");
         Cursor res= DB.getData(username);
@@ -128,18 +128,23 @@ public class ViewVoucherActivity extends AppCompatActivity {
     private void getView() {
        DB.queryData("Create Table if not exists Voucher (voucherID Integer Primary Key Autoincrement," +
                "voucherName nvarchar(20), expiredDate nvarchar(20), voucherPrice Integer, description nvarchar(50))");
-        DB.queryData("Create Table if not exists UserVoucher (voucherOrderID Integer Primary Key Autoincrement," +
-                "userName nvarchar(20), voucherName nvarchar(20), voucherCode nvarchar(20), exchangeDate nvarchar(20),Constraint fk_User Foreign Key (userName) references User(userName))");
+        DB.queryData("create Table if not exists UserVoucher (userVoucherID Integer Primary Key Autoincrement," +
+                "userName nvarchar(20) references User,voucherName nvarchar(20) references Voucher,voucherCode nvarchar(20), exchangeDate nvarchar(20))");
 //        DB.queryData();
         Cursor dataVoucher= DB.getVoucher();
-        arrayVoucher.clear();
-        while (dataVoucher.moveToNext()){
-            String ten= dataVoucher.getString(1);
-            String hsd= dataVoucher.getString(2);
-            int gia= dataVoucher.getInt(3);
-            String mota= dataVoucher.getString(4);
-            int id= dataVoucher.getInt(0);
-            arrayVoucher.add(new Voucher(id, ten, hsd, gia, mota));
+        if(dataVoucher.getCount()>0){
+            arrayVoucher.clear();
+            while (dataVoucher.moveToNext()){
+                String ten= dataVoucher.getString(1);
+                String hsd= dataVoucher.getString(2);
+                int gia= dataVoucher.getInt(3);
+                String mota= dataVoucher.getString(4);
+                int id= dataVoucher.getInt(0);
+                arrayVoucher.add(new Voucher(id, ten, hsd, gia, mota));
+            }
+        }else{
+            DB.queryData();
+            getView();
         }
         adapter.notifyDataSetChanged();
     }

@@ -66,12 +66,17 @@ public class MyVoucherActivity extends AppCompatActivity {
         Intent intent= getIntent();
         String username= intent.getStringExtra("user");
         Cursor cursor= DB.getMyVoucher(username);
-        arrayMyVoucher.clear();
-        while (cursor.moveToNext()){
-            String ten= cursor.getString(0);
-            String code= cursor.getString(1);
-            String mota= cursor.getString(2);
-            arrayMyVoucher.add(new MyVoucher(ten, code, mota));
+        if(cursor.getCount()>0){
+            arrayMyVoucher.clear();
+            while (cursor.moveToNext()){
+                String ten= cursor.getString(0);
+                String code= cursor.getString(1);
+                String mota= cursor.getString(2);
+                arrayMyVoucher.add(new MyVoucher(ten, code, mota));
+            }
+        }else{
+            Toast.makeText(MyVoucherActivity.this, "Bạn chưa mua voucher nào", Toast.LENGTH_SHORT).show();
+            finish();
         }
         adapter.notifyDataSetChanged();
     }
