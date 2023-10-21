@@ -25,7 +25,7 @@ public class OrderActivity extends AppCompatActivity {
     private ActivityResultLauncher<Intent> launcher;
     Button btnSelectLoca, btnPickTime, btnPickDate, btnCreateOrder;
     ImageView btnBack2;
-    TextView txtLocation;
+    TextView txtLocation, txtGetTime, txtGetDate;
     DBHelper DB;
     AlertDialog.Builder builder;
     @Override
@@ -37,6 +37,8 @@ public class OrderActivity extends AppCompatActivity {
         btnPickDate = findViewById(R.id.idBtnPickDate);
         btnCreateOrder = findViewById(R.id.btnCreateOrder);
         txtLocation = findViewById(R.id.tvAddress);
+        txtGetTime = findViewById(R.id.tvGetTime);
+        txtGetDate = findViewById(R.id.tvGetDate);
         btnBack2 = findViewById(R.id.back2);
         DB= new DBHelper(this);
         builder= new AlertDialog.Builder(this);
@@ -70,7 +72,7 @@ public class OrderActivity extends AppCompatActivity {
             // on below line we are initializing our Time Picker Dialog
             TimePickerDialog timePickerDialog = new TimePickerDialog(OrderActivity.this, android.R.style.Theme_Holo_Light_Dialog ,
                     (view, hourOfDay, minute1) -> {
-                        btnPickTime.setText(hourOfDay + ":" + minute1);
+                        txtGetTime.setText(hourOfDay + ":" + minute1);
                     }, hour, minute, false);
             // at last we are calling show to
             // display our time picker dialog.
@@ -95,7 +97,7 @@ public class OrderActivity extends AppCompatActivity {
                     OrderActivity.this,
                     (view, year1, monthOfYear, dayOfMonth) -> {
                         // on below line we are setting date to our text view.
-                        btnPickDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year1);
+                        txtGetDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year1);
                     },
                     // on below line we are passing year,
                     // month and day for selected date in our date picker.
@@ -126,8 +128,8 @@ public class OrderActivity extends AppCompatActivity {
                 " userName nvarchar(20), materialAmount decimal, createDate nvarchar(20), status nvarchar(20), getAddress nvarchar(50), getDate nvarchar(20), getTime nvarchar(20), orderPoint Integer,Constraint fk_UserOrder Foreign Key (userName) references User(userName))");
         String userName = getIntent().getStringExtra("user");
         String address = txtLocation.getText().toString();
-        String orderTime = btnPickTime.getText().toString();
-        String orderDate = btnPickDate.getText().toString();
+        String orderTime = txtGetTime.getText().toString();
+        String orderDate = txtGetDate.getText().toString();
         Cursor res= DB.getData(userName);
         if(res.getCount()== 0){
             Toast.makeText(OrderActivity.this, "Lỗi", Toast.LENGTH_SHORT).show();

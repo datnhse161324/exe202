@@ -13,12 +13,11 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.exe201.ConfirmOrderActivity;
 import com.example.exe201.DBHelper;
 import com.example.exe201.R;
 import com.example.exe201.ViewOrderActivity;
 import com.example.exe201.models.Order;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -26,7 +25,6 @@ public class OrderAdapter extends BaseAdapter {
     private Context context;
     private int layout;
     private List<Order> orderList;
-
     public OrderAdapter(Context context, int layout, List<Order> orderList) {
         this.context = context;
         this.layout = layout;
@@ -64,36 +62,18 @@ public class OrderAdapter extends BaseAdapter {
         Order order = orderList.get(position);
         txtCode.setText(order.getOrderCode());
         txtCreDate.setText(order.getCreateDate());
-        txtOrderDate.setText(order.getOrderDate());
-        txtOrderTime.setText(order.getOrderTime());
-        txtAddress.setText(order.getAddress());
+        txtOrderDate.setText(order.getGetDate());
+        txtOrderTime.setText(order.getGetTime());
+        txtAddress.setText(order.getGetAddress());
         txtStatus.setText(order.getStatus());
         txtPoint.setText(String.valueOf(order.getOrderPoint()));
         if(context instanceof ViewOrderActivity){
             Button btnStatus = view.findViewById(R.id.btnStatus);
             Button btnGuide = view.findViewById((R.id.btnGuide));
             btnStatus.setOnClickListener(v->{
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setMessage("Bạn muốn thay đổi trạng thái của đơn này?")
-                        .setCancelable(true)
-                        .setPositiveButton("CÓ", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                DBHelper DB = new DBHelper(context);
-                                DB.updateOrderStatus(order.getOrderCode(),"finished");
-                                dialogInterface.cancel();
-                                Intent intent = ((ViewOrderActivity) context).getIntent();
-                                context.startActivity(intent);
-                                ((ViewOrderActivity) context).finish();
-                            }
-                        })
-                        .setNegativeButton("KHÔNG", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.cancel();
-                            }
-                        })
-                        .show();
+                Intent confirm = new Intent(context, ConfirmOrderActivity.class);
+                confirm.putExtra(ConfirmOrderActivity.Order,order);
+                context.startActivity(confirm);
             });
             btnGuide.setOnClickListener(v->{
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -102,7 +82,7 @@ public class OrderAdapter extends BaseAdapter {
                         .setPositiveButton("CÓ", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                String destination = order.getAddress();
+                                String destination = order.getGetAddress();
                                 getDirection(destination);
                                 dialogInterface.cancel();
                             }

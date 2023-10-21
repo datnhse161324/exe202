@@ -35,39 +35,41 @@
     <LinearLayout
         android:id="@+id/LLchoseLoca"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/LLtitle"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="-7dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="48dp"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/icLoca"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="17dp"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/location" />
-
-        <TextView
-            android:id="@+id/tvOrderText"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:text="Địa chỉ thu gom: "
-            android:textColor="#5F9866"
-            android:layout_marginLeft="7dp"
-            android:layout_marginTop="10dp"
-            android:textStyle="bold"
-            android:textSize="27sp"/>
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/icLoca"
+                android:layout_width="50dp"
+                android:layout_height="60dp"
+                android:background="@drawable/location" />
+
+            <TextView
+                android:id="@+id/tvOrderText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:text="Địa chỉ thu gom: "
+                android:textColor="#5F9866"
+                android:textStyle="bold"
+                android:textSize="27sp"/>
+        </LinearLayout>
         
         <Button
             android:id="@+id/selectLoca"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Chọn"
-            android:layout_marginLeft="7dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginVertical="7dp"
             android:textSize="20sp"
             android:backgroundTint="#5F9866"
             />
@@ -79,7 +81,8 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_below="@+id/LLchoseLoca"
-        android:layout_marginTop="16dp"
+        android:layout_marginVertical="16dp"
+        android:layout_marginHorizontal="10dp"
         android:hint="Địa chỉ... "
         android:textSize="18dp"
         android:paddingLeft="10dp"/>
@@ -89,74 +92,100 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvAddress"
+        android:layout_marginStart="10dp"
         android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/icTime"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="17dp"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/birth" />
-
-        <TextView
-            android:id="@+id/tvTimeText"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:text="Giờ thu gom:"
-            android:layout_weight="1"
-            android:textColor="#5F9866"
-            android:layout_marginLeft="7dp"
-            android:layout_marginTop="10dp"
-            android:textStyle="bold"
-            android:textSize="27sp"/>
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/icTime"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/birth" />
+
+            <TextView
+                android:id="@+id/tvTimeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:text="Giờ thu gom:"
+                android:layout_weight="1"
+                android:textColor="#5F9866"
+                android:textStyle="bold"
+                android:textSize="27sp"/>
+        </LinearLayout>
 
         <Button
             android:id="@+id/idBtnPickTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginVertical="7dp"
             android:text="Chọn"
             android:textSize="20sp"
             android:textAllCaps="false"
             android:backgroundTint="#5F9866"/>
     </LinearLayout>
+    <TextView
+        android:id="@+id/tvGetTime"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/LLchoseTime"
+        android:layout_marginVertical="16dp"
+        android:layout_marginHorizontal="10dp"
+        android:hint="Giờ thu gom... "
+        android:textSize="18dp"
+        android:paddingLeft="10dp"/>
     <LinearLayout
         android:id="@+id/LLchoseDate"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_below="@+id/LLchoseTime"
+        android:layout_below="@+id/tvGetTime"
+        android:layout_marginStart="10dp"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/icDate"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="17dp"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/birth" />
-
-        <TextView
-            android:id="@+id/tvDateText"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:text="Ngày thu gom: "
-            android:textColor="#5F9866"
-            android:layout_marginLeft="7dp"
-            android:layout_marginTop="10dp"
-            android:textStyle="bold"
-            android:textSize="27sp"/>
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/icDate"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/birth" />
 
+            <TextView
+                android:id="@+id/tvDateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày thu gom: "
+                android:textColor="#5F9866"
+                android:layout_marginVertical="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:textStyle="bold"
+                android:textSize="27sp"/>
+        </LinearLayout>
         <Button
             android:id="@+id/idBtnPickDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginVertical="7dp"
             android:text="Chọn"
             android:textSize="20sp"
             android:textAllCaps="false"
             android:backgroundTint="#5F9866"/>
     </LinearLayout>
+    <TextView
+        android:id="@+id/tvGetDate"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/LLchoseDate"
+        android:layout_marginVertical="16dp"
+        android:layout_marginHorizontal="10dp"
+        android:hint="Ngày thu gom... "
+        android:textSize="18dp"
+        android:paddingLeft="10dp"/>
     <Button
         android:id="@+id/btnCreateOrder"
         android:layout_width="wrap_content"
