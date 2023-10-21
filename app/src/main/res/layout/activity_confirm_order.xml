@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/ctConfirm"
     tools:context=".ConfirmOrderActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/LLHeader"
@@ -226,47 +227,59 @@
                 android:drawableTint="#FFFFFF"
                 android:backgroundTint="#5F9866"/>
         </LinearLayout>
-    </LinearLayout>
-    <ScrollView
-        android:id="@+id/scOrderDetailList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/LLBody">
-        <ListView
-            android:id="@+id/lvOrderDetailList"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true" />
-    </ScrollView>
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/LLOrderDetail">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lvOrderDetailList"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="10dp"
+                android:paddingVertical="20dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnAddPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tính điểm"
+        app:layout_constraintBottom_toTopOf="@+id/LLPoint"
+        app:layout_constraintTop_toBottomOf="@+id/LLBody"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginVertical="10dp"
+        android:backgroundTint="#5F9866">
+    </Button>
     <LinearLayout
         android:id="@+id/LLPoint"
+        app:layout_constraintTop_toBottomOf="@id/btnAddPoint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnStatus"
-        android:layout_marginVertical="10dp"
+        android:layout_marginVertical="20dp"
         android:orientation="horizontal">
         <TextView
             android:layout_width="200dp"
             android:layout_height="25dp"
             android:text="Điểm"
             android:paddingLeft="5dp"
-            android:gravity="center_vertical"
+            android:layout_marginVertical="5dp"
             android:textSize="15sp"
             android:textColor="@color/cardview_dark_background"/>
-
         <TextView
             android:id="@+id/tvOrderPoint"
             android:layout_width="200dp"
             android:layout_height="25dp"
-            android:text="chưa có"
+            android:text="0.0"
             android:paddingLeft="5dp"
-            android:gravity="center_vertical"
+            android:layout_marginVertical="5dp"
             android:textSize="15sp"
             android:textColor="@color/cardview_dark_background"/>
     </LinearLayout>
+
     <Button
         android:id="@+id/btnStatus"
         android:layout_width="match_parent"

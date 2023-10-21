@@ -1,36 +1,44 @@
 package com.example.exe201;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.exe201.adapters.OrderDetailAdapter;
 import com.example.exe201.models.Material;
 import com.example.exe201.models.Order;
 import com.example.exe201.models.OrderDetail;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
 public class ConfirmOrderActivity extends AppCompatActivity {
-
+    private ActivityResultLauncher<Intent> launcher;
+    public static final String MATERIAL_NAME="materialName";
     Button btnGuide, btnStatus, btnAddOrderDetail;
     ImageView btnBack;
-    ListView lvOrderDetail;
+    RecyclerView lvOrderDetail;
     ArrayList<OrderDetail> arrayList;
-    ArrayList<Material> arrayMaterial;
     OrderDetailAdapter adapter;
     DBHelper DB;
+    ConstraintLayout constraintLayout;
     public static final String Order = "order";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +53,9 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         arrayList = new ArrayList<>();
         adapter = new OrderDetailAdapter(this, R.layout.order_detail_row, arrayList);
         lvOrderDetail.setAdapter(adapter);
+        lvOrderDetail.setHasFixedSize(true);
+        lvOrderDetail.setLayoutManager(new LinearLayoutManager(this));
+        constraintLayout = findViewById(R.id.ctConfirm);
 
         TextView txtCode = findViewById(R.id.tvOrderCode);
         TextView txtCreDate = findViewById(R.id.tvCreateDate);
@@ -61,6 +72,18 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         txtOrderTime.setText(order.getGetTime());
         txtAddress.setText(order.getGetAddress());
         txtStatus.setText(order.getStatus());
+
+        launcher =registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK) {
+                        Intent data = result.getData();
+                        Material material = data.getParcelableExtra(MATERIAL_NAME);
+                        arrayList.add(new OrderDetail(order.getOrderCode(), material.getMaterialName(), 0, material));
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+
         btnStatus.setOnClickListener(v->{
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("Bạn muốn thay đổi trạng thái của đơn này?")
@@ -68,12 +91,14 @@ public class ConfirmOrderActivity extends AppCompatActivity {
                     .setPositiveButton("CÓ", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            DBHelper DB = new DBHelper(ConfirmOrderActivity.this);
-                            DB.updateOrderStatus(order.getOrderCode(),"finished");
-                            dialogInterface.cancel();
-                            Intent intent = getIntent();
-                            startActivity(intent);
-                            finish();
+                            if(!arrayList.isEmpty()){
+                                DBHelper DB = new DBHelper(ConfirmOrderActivity.this);
+                                DB.updateOrderStatus(order.getOrderCode(),"finished");
+                                dialogInterface.cancel();
+                                finish();
+                            }else{
+                                Toast.makeText(ConfirmOrderActivity.this, "Bạn chưa thêm material", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     })
                     .setNegativeButton("KHÔNG", new DialogInterface.OnClickListener() {
@@ -111,7 +136,36 @@ public class ConfirmOrderActivity extends AppCompatActivity {
             }
         });
         btnAddOrderDetail.setOnClickListener(v->{
-            adapter.notifyDataSetChanged();
+            Intent intent = new Intent(ConfirmOrderActivity.this, AddOrderDetailActivity.class);
+            launcher.launch(intent);
+        });
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
+                Snackbar snackbar = Snackbar.make(constraintLayout, "đã xóa thành công khỏi danh sách",Snackbar.LENGTH_LONG);
+                snackbar.show();
+                int index = viewHolder.getAdapterPosition();
+                double value = arrayList.get(index).getMaterial().getUnitPrice()*arrayList.get(index).getMaterialAmount();
+                double point = Double.parseDouble(String.valueOf(txtPoint.getText()))- value;
+                arrayList.remove(index);
+                txtPoint.setText(String.valueOf(point));
+                adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+            }
+        });
+        itemTouchHelper.attachToRecyclerView(lvOrderDetail);
+
+        Button btnPoint = findViewById(R.id.btnAddPoint);
+        btnPoint.setOnClickListener(v->{
+            double point = 0;
+            for (OrderDetail orderDetail:arrayList) {
+                point += orderDetail.getMaterial().getUnitPrice() * orderDetail.getMaterialAmount();
+            }
+            txtPoint.setText(String.valueOf(point));
         });
     }
 
@@ -129,20 +183,5 @@ public class ConfirmOrderActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-    private void getMaterial(){
-        DB.queryData("Create Table if not exists Material (materialID Integer Primary Key Autoincrement," +
-                "materialName nvarchar(20), unitPrice Integer)");
-        Cursor dataMaterial= DB.getVMaterial();
-        if(dataMaterial.getCount()<=0){
-            DB.queryDataMaterial();
-            dataMaterial= DB.getVMaterial();
-        }
-        arrayMaterial.clear();
-        while (dataMaterial.moveToNext()){
-            String ten= dataMaterial.getString(1);
-            int gia= dataMaterial.getInt(2);
-            int id= dataMaterial.getInt(0);
-            arrayMaterial.add(new Material(id, ten, gia));
-        }
-    }
+
 }

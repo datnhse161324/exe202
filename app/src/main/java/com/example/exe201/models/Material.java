@@ -1,6 +1,11 @@
 package com.example.exe201.models;
 
-public class Material {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class Material implements Parcelable {
     private int materialID;
     private String materialName;
     private int unitPrice;
@@ -10,6 +15,24 @@ public class Material {
         this.materialName = materialName;
         this.unitPrice = unitPrice;
     }
+
+    protected Material(Parcel in) {
+        materialID = in.readInt();
+        materialName = in.readString();
+        unitPrice = in.readInt();
+    }
+
+    public static final Creator<Material> CREATOR = new Creator<Material>() {
+        @Override
+        public Material createFromParcel(Parcel in) {
+            return new Material(in);
+        }
+
+        @Override
+        public Material[] newArray(int size) {
+            return new Material[size];
+        }
+    };
 
     public int getMaterialID() {
         return materialID;
@@ -33,5 +56,17 @@ public class Material {
 
     public void setUnitPrice(int unitPrice) {
         this.unitPrice = unitPrice;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(materialID);
+        dest.writeString(materialName);
+        dest.writeInt(unitPrice);
     }
 }
