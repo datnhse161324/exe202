@@ -1,10 +1,10 @@
 package com.example.exe201;
 
-import androidx.appcompat.app.AlertDialog;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -104,7 +104,8 @@ public class ViewOrderActivity extends AppCompatActivity {
                 if(ten.equals("")){
                     Toast.makeText(ViewOrderActivity.this,"Vui lòng nhập số tiền !",Toast.LENGTH_SHORT).show();
                 }else {
-                    int temp= Integer.getInteger(String.valueOf(editTen.getText()));
+                    int temp=0;
+                    temp= Integer.getInteger(String.valueOf(editTen.getText()));
                     Cursor res= DB.getData(name);
                     if(res.getCount()== 0){
                         Toast.makeText(ViewOrderActivity.this, "Lỗi", Toast.LENGTH_SHORT).show();
@@ -116,7 +117,7 @@ public class ViewOrderActivity extends AppCompatActivity {
                     }
                     int a= myPoint+ (temp/10);
                     DB.updatePoint(name,a);
-                    Toast.makeText(ViewOrderActivity.this,"Da them "+a+"điểm",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ViewOrderActivity.this,"Đã hoàn tất đơn",Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                 }
             }
