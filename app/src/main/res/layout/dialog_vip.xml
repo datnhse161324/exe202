@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textVIP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="13dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Hãy mua gói Premium để nhận thêm ưu đãi"
+        android:textColor="@color/primary"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textPremium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textStyle="italic"
+        android:layout_below="@+id/textVIP"
+        android:text=" (*) Tăng 20% số điểm nhận được mỗi đơn hàng
+\n
+(*) Miễn phí tiền di chuyển đến địa điểm thu dọn
+\n
+(*) Giảm giá 15% khi sử dụng điểm cho các dự án công cộng và môi trường
+\n
+(*) Giảm giá 10% khi sử dụng điểm mua phiếu quà tặng"/>
+
+    <ImageView
+        android:id="@+id/imMomo"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_below="@+id/textPremium"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/momoo" />
+
+    <TextView
+        android:id="@+id/textBuy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imMomo"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="20dp"
+        android:text="Scan mã QR để đăng ký gói \n hoặc"
+        android:textAlignment="center"
+        android:textSize="17sp" />
+
+    <Button
+        android:id="@+id/buttonHuy2"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@+id/textBuy"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="165dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="17dp"
+        android:text="Huy"
+        android:textSize="20sp" />
+</RelativeLayout>

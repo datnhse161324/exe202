@@ -135,12 +135,23 @@ public class DBHelper extends SQLiteOpenHelper {
     contentValues.put("gender",gen);
     contentValues.put("address",address);
     contentValues.put("point",20000);
+    contentValues.put("role","Normal");
     long result= myDB.update("User", contentValues, "userName=?", new String[]{username});
     if (result==-1)
         return false;
     else
         return true;
 }
+    public boolean updateVip(String username){
+        SQLiteDatabase myDB= this.getWritableDatabase();
+        ContentValues contentValues= new ContentValues();
+        contentValues.put("role", "VIP");
+        long result= myDB.update("User", contentValues, "userName=?", new String[]{username});
+        if (result==-1)
+            return false;
+        else
+            return true;
+    }
     public boolean insertMyVoucher(String username, String vouchername, String vouchercode){
         SQLiteDatabase myDB= this.getWritableDatabase();
         Cursor cursor=myDB.rawQuery("Select * from UserVoucher",null);
