@@ -27,23 +27,20 @@
         android:layout_below="@+id/textVIP"
         android:text=" (*) Tăng 20% số điểm nhận được mỗi đơn hàng
 \n
-\n
 (*) Miễn phí tiền di chuyển đến địa điểm thu dọn
 \n
-\n
 (*) Giảm giá 15% khi sử dụng điểm cho các dự án công cộng và môi trường
-\n
 \n
 (*) Giảm giá 10% khi sử dụng điểm mua phiếu quà tặng"/>
 
     <ImageView
         android:id="@+id/imMomo"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
         android:layout_below="@+id/textPremium"
-        android:layout_marginLeft="55dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/momo" />
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/momoo" />
 
     <TextView
         android:id="@+id/textBuy"
@@ -51,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imMomo"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="6dp"
         android:layout_marginRight="20dp"
         android:text="Scan mã QR để đăng ký gói \n hoặc"
         android:textAlignment="center"
@@ -60,10 +57,12 @@
     <Button
         android:id="@+id/buttonHuy2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_below="@+id/textBuy"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="165dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="17dp"
         android:text="Huy"
         android:textSize="20sp" />
 </RelativeLayout>
