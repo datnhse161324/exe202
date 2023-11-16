@@ -157,36 +157,36 @@
             android:textSize="15sp"
             android:textColor="@color/cardview_dark_background"/>
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/LLPoint"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/LLStatus"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="200dp"
-            android:layout_height="25dp"
-            android:text="Điểm"
-            android:paddingLeft="5dp"
-            android:gravity="center_vertical"
-            android:textSize="15sp"
-            android:textColor="@color/cardview_dark_background"/>
+<!--    <LinearLayout-->
+<!--        android:id="@+id/LLPoint"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/LLStatus"-->
+<!--        android:orientation="horizontal">-->
+<!--        <TextView-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="25dp"-->
+<!--            android:text="Điểm"-->
+<!--            android:paddingLeft="5dp"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:textSize="15sp"-->
+<!--            android:textColor="@color/cardview_dark_background"/>-->
 
-        <TextView
-            android:id="@+id/tvOrderPoint"
-            android:layout_width="200dp"
-            android:layout_height="25dp"
-            android:text="chưa có"
-            android:paddingLeft="5dp"
-            android:gravity="center_vertical"
-            android:textSize="15sp"
-            android:textColor="@color/cardview_dark_background"/>
-    </LinearLayout>
+<!--        <TextView-->
+<!--            android:id="@+id/tvOrderPoint"-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="25dp"-->
+<!--            android:text="chưa có"-->
+<!--            android:paddingLeft="5dp"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:textSize="15sp"-->
+<!--            android:textColor="@color/cardview_dark_background"/>-->
+<!--    </LinearLayout>-->
     <Button
         android:id="@+id/btnStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/LLPoint"
+        android:layout_below="@id/LLStatus"
         android:layout_centerHorizontal="true"
         android:text="Cập nhât trạng thái"
         android:backgroundTint="#5F9866">

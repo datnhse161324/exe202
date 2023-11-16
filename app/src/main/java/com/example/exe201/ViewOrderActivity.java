@@ -48,20 +48,20 @@ public class ViewOrderActivity extends AppCompatActivity {
             }
         });
 
-        lvOrderList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                vitri= i;
-                Order order= arrayOrder.get(i);
-                String name= order.getUserName();
-                if(order.getStatus().equals("waiting")){
-                    dialogThem(name);
-                    DB.updateOrderStatus(order.getOrderCode(),"done");
-                }else {
-                    Toast.makeText(ViewOrderActivity.this, "Đơn đã hoàn tất", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+//        lvOrderList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                vitri= i;
+//                Order order= arrayOrder.get(i);
+//                String name= order.getUserName();
+//                if(order.getStatus().equals("waiting")){
+//                    dialogThem(name);
+//                    DB.updateOrderStatus(order.getOrderCode(),"done");
+//                }else {
+//                    Toast.makeText(ViewOrderActivity.this, "Đơn đã hoàn tất", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
     }
     private void getView(){
         DB.queryData("create table if not exists Orders (orderID Integer Primary Key Autoincrement,orderCode nvarchar(20)," +

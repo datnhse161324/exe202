@@ -13,8 +13,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    LinearLayout imgSet, imgVoucher, imgMaterial, imgMyVoucher, imgMyOrder, imgAboutUs, imgPre;
-    ImageView imgProfile;
+    LinearLayout imgSet, imgVoucher, imgMaterial, imgMyVoucher, imgMyOrder, imgAboutUs;
+    ImageView imgProfile, imgPre;
 
     DBHelper DB;
 
@@ -110,8 +110,8 @@ public class MainActivity extends AppCompatActivity {
         Dialog dialog= new Dialog(this);
         dialog.setContentView(R.layout.dialog_vip);
 
-        Button btnHuy= findViewById(R.id.buttonHuy2);
-        ImageView imgMua= findViewById(R.id.imMomo);
+        Button btnHuy= dialog.findViewById(R.id.buttonHuy2);
+        ImageView imgMua= dialog.findViewById(R.id.imMomo);
 
         imgMua.setOnClickListener(new View.OnClickListener() {
             @Override

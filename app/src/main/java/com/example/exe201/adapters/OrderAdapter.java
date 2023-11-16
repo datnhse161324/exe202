@@ -1,17 +1,21 @@
 package com.example.exe201.adapters;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.exe201.ConfirmOrderActivity;
 import com.example.exe201.DBHelper;
@@ -25,10 +29,12 @@ public class OrderAdapter extends BaseAdapter {
     private Context context;
     private int layout;
     private List<Order> orderList;
+    DBHelper DB;
     public OrderAdapter(Context context, int layout, List<Order> orderList) {
         this.context = context;
         this.layout = layout;
         this.orderList = orderList;
+        DB = new DBHelper(context);
     }
 
     @Override
@@ -57,7 +63,7 @@ public class OrderAdapter extends BaseAdapter {
         TextView txtOrderTime = (TextView) view.findViewById(R.id.tvOrderTime);
         TextView txtAddress = (TextView) view.findViewById(R.id.tvAddress);
         TextView txtStatus = (TextView) view.findViewById(R.id.tvStatus);
-        TextView txtPoint = (TextView) view.findViewById(R.id.tvOrderPoint);
+//        TextView txtPoint = (TextView) view.findViewById(R.id.tvOrderPoint);
 
         Order order = orderList.get(position);
         txtCode.setText(order.getOrderCode());
@@ -66,14 +72,23 @@ public class OrderAdapter extends BaseAdapter {
         txtOrderTime.setText(order.getGetTime());
         txtAddress.setText(order.getGetAddress());
         txtStatus.setText(order.getStatus());
-        txtPoint.setText(String.valueOf(order.getOrderPoint()));
+//        txtPoint.setText(String.valueOf(order.getOrderPoint()));
         if(context instanceof ViewOrderActivity){
             Button btnStatus = view.findViewById(R.id.btnStatus);
             Button btnGuide = view.findViewById((R.id.btnGuide));
+//            btnStatus.setOnClickListener(v->{
+//                Intent confirm = new Intent(context, ConfirmOrderActivity.class);
+//                confirm.putExtra(ConfirmOrderActivity.Order,order);
+//                context.startActivity(confirm);
+//            });
             btnStatus.setOnClickListener(v->{
-                Intent confirm = new Intent(context, ConfirmOrderActivity.class);
-                confirm.putExtra(ConfirmOrderActivity.Order,order);
-                context.startActivity(confirm);
+                String name= order.getUserName();
+                if(order.getStatus().equals("waiting")){
+                    dialogThem(name);
+                    DB.updateOrderStatus(order.getOrderCode(),"finished");
+                }else {
+                    Toast.makeText(context, "Đơn đã hoàn tất", Toast.LENGTH_SHORT).show();
+                }
             });
             btnGuide.setOnClickListener(v->{
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -114,5 +129,45 @@ public class OrderAdapter extends BaseAdapter {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         }
+    }
+    private void dialogThem(String name){
+        Dialog dialog= new Dialog(context);
+        dialog.setContentView(R.layout.dialog_price);
+        Cursor res= DB.getData(name);
+
+        EditText editTen= (EditText) dialog.findViewById(R.id.editTextSua);
+        Button btnThem= (Button) dialog.findViewById(R.id.buttonSua);
+        Button btnTHuy= (Button) dialog.findViewById(R.id.buttonHuy);
+        btnThem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String ten =editTen.getText().toString();
+                if(ten.equals("")){
+                    Toast.makeText(context,"Vui lòng nhập số tiền !",Toast.LENGTH_SHORT).show();
+                }else {
+                    int temp=0;
+                    temp= Integer.parseInt(ten);
+                    if(res.getCount()== 0){
+                        Toast.makeText(context, "Lỗi", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    int myPoint=0;
+                    while (res.moveToNext()){
+                        myPoint= res.getInt(9);
+                    }
+                    int a= myPoint+ (temp/10);
+                    DB.updatePoint(name,a);
+                    Toast.makeText(context,"Đã hoàn tất đơn",Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                }
+            }
+        });
+        btnTHuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 }
